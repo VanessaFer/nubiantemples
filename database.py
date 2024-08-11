@@ -1,5 +1,4 @@
 import streamlit as st
-from PIL import Image
 import pandas as pd
 import mysql.connector
 #pip install mysql-connector-python
@@ -8,7 +7,7 @@ def app():
 
     connection = mysql.connector.connect(
     host = "localhost",
-    username = "root",
+    user = "root",
     password = "vanni1791",
     database = "templi"
 )
