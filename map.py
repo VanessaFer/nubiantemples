@@ -1,15 +1,12 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests
 import folium
-import json
-import os
-import pathlib as pl
-from IPython.display import display
+#import pathlib as pl
+#from IPython.display import display
 from folium import plugins
 from folium.plugins import MarkerCluster
-import branca.colormap as cm
+#import branca.colormap as cm
 from streamlit_folium import folium_static
 
 def app():
