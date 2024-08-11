@@ -7,7 +7,7 @@ folium
 IPython
 numpy
 requests
-json
+jsonlib
 os
 pathlib
 branca
