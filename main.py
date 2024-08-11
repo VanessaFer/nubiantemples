@@ -6,7 +6,7 @@ from streamlit_option_menu import option_menu
 import contacts, database, history, home, map
 #non scrivere il .py
 
-im = Image.open(r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\icona_sito1.png")
+im = Image.open("icona_sito1.png")
 #https://www.rawpixel.com/image/6314650/png-template-vintage
 st.set_page_config(
     page_title="Nubian Temples Project",
