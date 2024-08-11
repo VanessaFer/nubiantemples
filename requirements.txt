@@ -4,3 +4,11 @@ pandas
 pillow
 mysql.connector
 folium
+IPython
+numpy
+requests
+json
+os
+pathlib
+branca
+streamlit_folium
