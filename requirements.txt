@@ -4,11 +4,5 @@ pandas
 pillow
 mysql.connector
 folium
-IPython
 numpy
-requests
-jsonlib
-os-sys
-pathlib
-branca
 streamlit_folium
