@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_55fc1a8f88512056bdf1475dd03ed075 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://unpkg.com/leaflet.featuregroup.subgroup@1.0.2/dist/leaflet.featuregroup.subgroup.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_55fc1a8f88512056bdf1475dd03ed075" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_55fc1a8f88512056bdf1475dd03ed075 = L.map(
+                "map_55fc1a8f88512056bdf1475dd03ed075",
+                {
+                    center: [22.809872815747962, 32.562480661588175],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_016b3743c967d7cc7925a10385be9330 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_016b3743c967d7cc7925a10385be9330.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            tile_layer_016b3743c967d7cc7925a10385be9330.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var marker_cluster_f6b533b27187915fa203399d26c81b07 = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            marker_cluster_f6b533b27187915fa203399d26c81b07.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e = L.featureGroup.subGroup(
+                marker_cluster_f6b533b27187915fa203399d26c81b07
+            );
+        
+    
+            feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8 = L.featureGroup.subGroup(
+                marker_cluster_f6b533b27187915fa203399d26c81b07
+            );
+        
+    
+            feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12 = L.featureGroup.subGroup(
+                marker_cluster_f6b533b27187915fa203399d26c81b07
+            );
+        
+    
+            feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            tile_layer_016b3743c967d7cc7925a10385be9330.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            marker_cluster_f6b533b27187915fa203399d26c81b07.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var marker_b4736f66172ba6e86df0eb5e9453ec59 = L.marker(
+                [22.33733111738564, 31.625831184131638],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_ff99e5cd149d67b638c1390d8ad65537 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_b4736f66172ba6e86df0eb5e9453ec59.setIcon(icon_ff99e5cd149d67b638c1390d8ad65537);
+        
+    
+        var popup_3e0fe4a0dbb7fce09ec0471e4435f41e = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_d1f3cbb4fee5abdfe3b5b50134ea9c6c = $(`<div id="html_d1f3cbb4fee5abdfe3b5b50134ea9c6c" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Great Temple of Abu Simbel</h2></b></center><br>         <p><b>Ancient location</b><br>Abu Simbel         <p><b>New location</b><br>Abu Simbel         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=https://en.wikipedia.org/wiki/Ra#Relationship_to_other_gods target="_blank">Re-Horakhty</a>         <br><a href=https://en.wikipedia.org/wiki/Ptah target="_blank">Ptah</a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_3e0fe4a0dbb7fce09ec0471e4435f41e.setContent(html_d1f3cbb4fee5abdfe3b5b50134ea9c6c);
+            
+        
+
+        marker_b4736f66172ba6e86df0eb5e9453ec59.bindPopup(popup_3e0fe4a0dbb7fce09ec0471e4435f41e)
+        ;
+
+        
+    
+    
+            marker_b4736f66172ba6e86df0eb5e9453ec59.bindTooltip(
+                `<div>
+                     Great Temple of Abu Simbel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_095de7011346cd6e0a3d9b384df3c502 = L.marker(
+                [22.33733111738564, 31.625831184131638],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_2b256fc37bcc7996370961b22af71bd3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_095de7011346cd6e0a3d9b384df3c502.setIcon(icon_2b256fc37bcc7996370961b22af71bd3);
+        
+    
+        var popup_7f45a96556b8af690937a134a2f0dbe2 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_e77f34c0ad402c9bd116dda2be893d53 = $(`<div id="html_e77f34c0ad402c9bd116dda2be893d53" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Small Temple of Abu Simbel</h2></b></center><br>         <p><b>Ancient location</b><br>Abu Simbel         <p><b>New location</b><br>Abu Simbel         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Hathor target="_blank">Hathor</a>         <br><a href=https://en.wikipedia.org/wiki/Nefertari target="_blank">Nefertari</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_7f45a96556b8af690937a134a2f0dbe2.setContent(html_e77f34c0ad402c9bd116dda2be893d53);
+            
+        
+
+        marker_095de7011346cd6e0a3d9b384df3c502.bindPopup(popup_7f45a96556b8af690937a134a2f0dbe2)
+        ;
+
+        
+    
+    
+            marker_095de7011346cd6e0a3d9b384df3c502.bindTooltip(
+                `<div>
+                     Small Temple of Abu Simbel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_53193fac43b58700546e75ff0e003825 = L.marker(
+                [22.73115, 32.26261],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_dc7a8d1cce37aaab797ccb94f3c9ffe5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_53193fac43b58700546e75ff0e003825.setIcon(icon_dc7a8d1cce37aaab797ccb94f3c9ffe5);
+        
+    
+        var popup_9ab094f41518f2223dd703a77629d889 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_1f573a9364bb1d96ddcb897d9d3e4352 = $(`<div id="html_1f573a9364bb1d96ddcb897d9d3e4352" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Amada</h2></b></center><br>         <p><b>Ancient location</b><br>Amada         <p><b>New location</b><br>New Amada         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=https://en.wikipedia.org/wiki/Ra#Relationship_to_other_gods target="_blank">Re-Horakhty</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th - 19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Thutmose_III target="_blank">Thutmose III</a>         <br><a href=https://en.wikipedia.org/wiki/Amenhotep_II target="_blank">Amenhotep II</a>         <br><a href=https://en.wikipedia.org/wiki/Thutmose_IV target="_blank">Thutmose IV</a>         <br><a href=https://en.wikipedia.org/wiki/Seti_I target="_blank">Seti I</a>         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=https://en.wikipedia.org/wiki/Merneptah target="_blank">Merenptah</a>         <br><a href=https://en.wikipedia.org/wiki/Siptah target="_blank">Siptah</a>         </div>`)[0];
+                popup_9ab094f41518f2223dd703a77629d889.setContent(html_1f573a9364bb1d96ddcb897d9d3e4352);
+            
+        
+
+        marker_53193fac43b58700546e75ff0e003825.bindPopup(popup_9ab094f41518f2223dd703a77629d889)
+        ;
+
+        
+    
+    
+            marker_53193fac43b58700546e75ff0e003825.bindTooltip(
+                `<div>
+                     Temple of Amada
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fea4984f41df9d00d2f3d9beeb87e25b = L.marker(
+                [22.732389, 32.262111],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_55fbe0ebc2c05cbe67c85ccc620a8337 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_fea4984f41df9d00d2f3d9beeb87e25b.setIcon(icon_55fbe0ebc2c05cbe67c85ccc620a8337);
+        
+    
+        var popup_d816ded7331532954bb5331b6b3b286b = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_09e21df9d567fa8edf4eb19590d643ad = $(`<div id="html_09e21df9d567fa8edf4eb19590d643ad" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Derr</h2></b></center><br>         <p><b>Ancient location</b><br>Derr         <p><b>New location</b><br>New Amada         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Ra#Relationship_to_other_gods target="_blank">Re-Horakhty</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_d816ded7331532954bb5331b6b3b286b.setContent(html_09e21df9d567fa8edf4eb19590d643ad);
+            
+        
+
+        marker_fea4984f41df9d00d2f3d9beeb87e25b.bindPopup(popup_d816ded7331532954bb5331b6b3b286b)
+        ;
+
+        
+    
+    
+            marker_fea4984f41df9d00d2f3d9beeb87e25b.bindTooltip(
+                `<div>
+                     Temple of Derr
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5deade33de8975d160c7da5950b7fc21 = L.marker(
+                [23.2833, 32.9],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_9ffaa7d9644a7780a081e548aa25b14e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_5deade33de8975d160c7da5950b7fc21.setIcon(icon_9ffaa7d9644a7780a081e548aa25b14e);
+        
+    
+        var popup_7194512a687243303b40a5e3ec9fe9bb = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_6bccc114e12b62dfa3657ee31c9a9978 = $(`<div id="html_6bccc114e12b62dfa3657ee31c9a9978" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Gerf Hussein</h2></b></center><br>         <p><b>Ancient location</b><br>Gerf Hussein         <p><b>New location</b><br>New Kalabsha         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Setau target="_blank">Setau</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_7194512a687243303b40a5e3ec9fe9bb.setContent(html_6bccc114e12b62dfa3657ee31c9a9978);
+            
+        
+
+        marker_5deade33de8975d160c7da5950b7fc21.bindPopup(popup_7194512a687243303b40a5e3ec9fe9bb)
+        ;
+
+        
+    
+    
+            marker_5deade33de8975d160c7da5950b7fc21.bindTooltip(
+                `<div>
+                     Temple of Gerf Hussein
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8482d55d933de4b37394e2a1d2aea4f3 = L.marker(
+                [23.961861, 32.866389],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_9b24ac90e7ad3e28adbfde90116f9f1f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_8482d55d933de4b37394e2a1d2aea4f3.setIcon(icon_9b24ac90e7ad3e28adbfde90116f9f1f);
+        
+    
+        var popup_9dd47fa5a826632355c08ef2e259eb2a = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_d2567c22380fc344237d2e5a390f0faa = $(`<div id="html_d2567c22380fc344237d2e5a390f0faa" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Beit el-Wali</h2></b></center><br>         <p><b>Ancient location</b><br>Beit el-Wali         <p><b>New location</b><br>New Kalabsha         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun-Re target="_blank">Amun-Re</a>         <br><a href=https://en.wikipedia.org/wiki/Ra#Relationship_to_other_gods target="_blank">Re-Horakhty</a>         <br><a href=https://en.wikipedia.org/wiki/Khnum target="_blank">Khnum</a>         <br><a href=https://en.wikipedia.org/wiki/Anuket target="_blank">Anuket</a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_9dd47fa5a826632355c08ef2e259eb2a.setContent(html_d2567c22380fc344237d2e5a390f0faa);
+            
+        
+
+        marker_8482d55d933de4b37394e2a1d2aea4f3.bindPopup(popup_9dd47fa5a826632355c08ef2e259eb2a)
+        ;
+
+        
+    
+    
+            marker_8482d55d933de4b37394e2a1d2aea4f3.bindTooltip(
+                `<div>
+                     Temple of Beit el-Wali
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_eb61db30156bbf0aee6aa9b5f465b3a3 = L.marker(
+                [22.7932, 32.5453],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_e3492f4c1a8a2af079982dc094fe094a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_eb61db30156bbf0aee6aa9b5f465b3a3.setIcon(icon_e3492f4c1a8a2af079982dc094fe094a);
+        
+    
+        var popup_8930ccd05fc0452a83e86b76c5c5cf35 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_86cc1d642152f8dd4cc5187ac422c1c4 = $(`<div id="html_86cc1d642152f8dd4cc5187ac422c1c4" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temples of Wadi es-Sebua</h2></b></center><br>         <p><b>Ancient location</b><br>Wadi es-Sebua         <p><b>New location</b><br>New Wadi es-Sebua         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Horus target="_blank">Nubian form of Horus</a>         <br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th - 19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Amenhotep_III target="_blank">Amenhotep III</a>         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_8930ccd05fc0452a83e86b76c5c5cf35.setContent(html_86cc1d642152f8dd4cc5187ac422c1c4);
+            
+        
+
+        marker_eb61db30156bbf0aee6aa9b5f465b3a3.bindPopup(popup_8930ccd05fc0452a83e86b76c5c5cf35)
+        ;
+
+        
+    
+    
+            marker_eb61db30156bbf0aee6aa9b5f465b3a3.bindTooltip(
+                `<div>
+                     Temples of Wadi es-Sebua
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3e3ad795205e564edf4f0fc7f379873 = L.marker(
+                [22.3, 31.6167],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_5d3d73dc61b88b84d9570ba083132b62 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_b3e3ad795205e564edf4f0fc7f379873.setIcon(icon_5d3d73dc61b88b84d9570ba083132b62);
+        
+    
+        var popup_f1bb740a6c277e86cd078c45fc8ceb36 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_db273dd797925f906447586863532a13 = $(`<div id="html_db273dd797925f906447586863532a13" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Horemheb temple at Abu Hoda</h2></b></center><br>         <p><b>Ancient location</b><br>Abu Oda         <p><b>New location</b><br>Aswan         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=https://en.wikipedia.org/wiki/Thoth target="_blank">Thot</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Horemheb target="_blank">Horemheb</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_f1bb740a6c277e86cd078c45fc8ceb36.setContent(html_db273dd797925f906447586863532a13);
+            
+        
+
+        marker_b3e3ad795205e564edf4f0fc7f379873.bindPopup(popup_f1bb740a6c277e86cd078c45fc8ceb36)
+        ;
+
+        
+    
+    
+            marker_b3e3ad795205e564edf4f0fc7f379873.bindTooltip(
+                `<div>
+                     Horemheb temple at Abu Hoda
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_547d642fb02380fe4b58e3a7c9015a00 = L.marker(
+                [21.083333, 30.716667],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_b7c2d3ae98cc5854fe6f4104c3485b0e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_547d642fb02380fe4b58e3a7c9015a00.setIcon(icon_b7c2d3ae98cc5854fe6f4104c3485b0e);
+        
+    
+        var popup_9f6f1ff460d8ca156342967a6d2d0d12 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_5edfbd1db373d1ecd9d7615707fd8df6 = $(`<div id="html_5edfbd1db373d1ecd9d7615707fd8df6" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Aksha</h2></b></center><br>         <p><b>Ancient location</b><br>Aksha         <p><b>New location</b><br>Khartoum         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>19th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ramesses_II target="_blank">Ramesses II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_9f6f1ff460d8ca156342967a6d2d0d12.setContent(html_5edfbd1db373d1ecd9d7615707fd8df6);
+            
+        
+
+        marker_547d642fb02380fe4b58e3a7c9015a00.bindPopup(popup_9f6f1ff460d8ca156342967a6d2d0d12)
+        ;
+
+        
+    
+    
+            marker_547d642fb02380fe4b58e3a7c9015a00.bindTooltip(
+                `<div>
+                     Temple of Aksha
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_08eda673b50aff0902dd126ad39e3c6d = L.marker(
+                [21.916667, 31.283333],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_d79767b047b9ed6cace1ff9e41251909 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_08eda673b50aff0902dd126ad39e3c6d.setIcon(icon_d79767b047b9ed6cace1ff9e41251909);
+        
+    
+        var popup_9049ef9157d38513906a43b6ff39d0be = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_da9c46e902c1428ee167b9242ec8b051 = $(`<div id="html_da9c46e902c1428ee167b9242ec8b051" style="width: 100.0%; height: 100.0%;">          <center><b><h2>South Temple</h2></b></center><br>         <p><b>Ancient location</b><br>Buhen         <p><b>New location</b><br>Khartoum         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Horus target="_blank">Horus of Buhen</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Hatshepsut target="_blank">Hatshepsut</a>         <br><a href=https://en.wikipedia.org/wiki/Thutmose_III target="_blank">Thutmose III</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_9049ef9157d38513906a43b6ff39d0be.setContent(html_da9c46e902c1428ee167b9242ec8b051);
+            
+        
+
+        marker_08eda673b50aff0902dd126ad39e3c6d.bindPopup(popup_9049ef9157d38513906a43b6ff39d0be)
+        ;
+
+        
+    
+    
+            marker_08eda673b50aff0902dd126ad39e3c6d.bindTooltip(
+                `<div>
+                     South Temple
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_535ce7af723c6e90b19b12fd4d217920 = L.marker(
+                [21.916667, 31.283333],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_6649e85de35a503efbd863027938682f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_535ce7af723c6e90b19b12fd4d217920.setIcon(icon_6649e85de35a503efbd863027938682f);
+        
+    
+        var popup_36dbd184b1effccce1e08d88c7ba69ce = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_56520e1705b0a54a773fcdba14e1e160 = $(`<div id="html_56520e1705b0a54a773fcdba14e1e160" style="width: 100.0%; height: 100.0%;">          <center><b><h2>North Temple</h2></b></center><br>         <p><b>Ancient location</b><br>Buhen         <p><b>New location</b><br>Khartoum         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Isis target="_blank">Isis</a>         <br><a href=https://en.wikipedia.org/wiki/Min_(god) target="_blank">Min</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ahmose_I target="_blank">Ahmose</a>         <br><a href=https://en.wikipedia.org/wiki/Amenhotep_II target="_blank">Amenhotep II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_36dbd184b1effccce1e08d88c7ba69ce.setContent(html_56520e1705b0a54a773fcdba14e1e160);
+            
+        
+
+        marker_535ce7af723c6e90b19b12fd4d217920.bindPopup(popup_36dbd184b1effccce1e08d88c7ba69ce)
+        ;
+
+        
+    
+    
+            marker_535ce7af723c6e90b19b12fd4d217920.bindTooltip(
+                `<div>
+                     North Temple
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef090824a0e7ee43dde46ad150d1840c = L.marker(
+                [21.5, 30.967],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_a708917f69ce4135c97e9422b87f750e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_ef090824a0e7ee43dde46ad150d1840c.setIcon(icon_a708917f69ce4135c97e9422b87f750e);
+        
+    
+        var popup_bf8bd54104d2bbc98f94a0d53ab93c91 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_5612fe81e28edfddaf36cb4b6caf1e5a = $(`<div id="html_5612fe81e28edfddaf36cb4b6caf1e5a" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Kumma</h2></b></center><br>         <p><b>Ancient location</b><br>Semna         <p><b>New location</b><br>Khartoum         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Khnum target="_blank">Khnum</a>         <br><a href=nan target="_blank">nan</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Thutmose_II target="_blank">Thutmose II</a>         <br><a href=https://en.wikipedia.org/wiki/Hatshepsut target="_blank">Hatshepsut</a>         <br><a href=https://en.wikipedia.org/wiki/Thutmose_III target="_blank">Thutmose III</a>         <br><a href=https://en.wikipedia.org/wiki/Amenhotep_II target="_blank">Amenhotep II</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_bf8bd54104d2bbc98f94a0d53ab93c91.setContent(html_5612fe81e28edfddaf36cb4b6caf1e5a);
+            
+        
+
+        marker_ef090824a0e7ee43dde46ad150d1840c.bindPopup(popup_bf8bd54104d2bbc98f94a0d53ab93c91)
+        ;
+
+        
+    
+    
+            marker_ef090824a0e7ee43dde46ad150d1840c.bindTooltip(
+                `<div>
+                     Temple of Kumma
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0ec8e26fdf1d24039889e96b4638ebfd = L.marker(
+                [21.5, 30.967],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_c5cc608a4b0d5e68a26235a86cad683b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_0ec8e26fdf1d24039889e96b4638ebfd.setIcon(icon_c5cc608a4b0d5e68a26235a86cad683b);
+        
+    
+        var popup_0cc6bd8c52d744520f404f92ee718456 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_0576158d8a115bba5c33fb5132ed40a9 = $(`<div id="html_0576158d8a115bba5c33fb5132ed40a9" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Semna West</h2></b></center><br>         <p><b>Ancient location</b><br>Semna         <p><b>New location</b><br>Khartoum         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Dedun target="_blank">Dedun</a>         <br><a href=https://en.wikipedia.org/wiki/Senusret_III target="_blank">Senusret III</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Hatshepsut target="_blank">Hatshepsut</a>         <br><a href=https://en.wikipedia.org/wiki/Thutmose_III target="_blank">Thutmose III</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_0cc6bd8c52d744520f404f92ee718456.setContent(html_0576158d8a115bba5c33fb5132ed40a9);
+            
+        
+
+        marker_0ec8e26fdf1d24039889e96b4638ebfd.bindPopup(popup_0cc6bd8c52d744520f404f92ee718456)
+        ;
+
+        
+    
+    
+            marker_0ec8e26fdf1d24039889e96b4638ebfd.bindTooltip(
+                `<div>
+                     Temple of Semna West
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1af331c73154f37c8202ad95defc2c95 = L.marker(
+                [22.622568, 31.962662],
+                {}
+            ).addTo(feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e);
+        
+    
+            var icon_6c8a467eff511e0576533166c735ddea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_1af331c73154f37c8202ad95defc2c95.setIcon(icon_6c8a467eff511e0576533166c735ddea);
+        
+    
+        var popup_4787c916b61fe41bd631bd7f207fbe12 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_8644f774db39cf6b8f81e7778788ceb3 = $(`<div id="html_8644f774db39cf6b8f81e7778788ceb3" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Ellesyia</h2></b></center><br>         <p><b>Ancient location</b><br>Ellesyia         <p><b>New location</b><br>Turin         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=https://en.wikipedia.org/wiki/Horus target="_blank">Horus</a>         <br><a href=https://en.wikipedia.org/wiki/Satis_(goddess) target="_blank">Satet</a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>New Kingdom</a>         <p><b>Dynasty</b><br>18th dynasty         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Thutmose_III target="_blank">Thutmose III</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_4787c916b61fe41bd631bd7f207fbe12.setContent(html_8644f774db39cf6b8f81e7778788ceb3);
+            
+        
+
+        marker_1af331c73154f37c8202ad95defc2c95.bindPopup(popup_4787c916b61fe41bd631bd7f207fbe12)
+        ;
+
+        
+    
+    
+            marker_1af331c73154f37c8202ad95defc2c95.bindTooltip(
+                `<div>
+                     Temple of Ellesyia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var marker_43a5f904e678df55b81d4bf4edad34ca = L.marker(
+                [24.021944, 32.888889],
+                {}
+            ).addTo(feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8);
+        
+    
+            var icon_ac9427c0badfd5c9e036abea9ce299db = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_43a5f904e678df55b81d4bf4edad34ca.setIcon(icon_ac9427c0badfd5c9e036abea9ce299db);
+        
+    
+        var popup_2b1d837632135141221026103facbf5b = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_8360d934cce11f245804c35a3606a950 = $(`<div id="html_8360d934cce11f245804c35a3606a950" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Philae</h2></b></center><br>         <p><b>Ancient location</b><br>Philae Island         <p><b>New location</b><br>Agilkia Island         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Isis target="_blank">Isis</a>         <br><a href=  target="_blank">nan</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Ptolemaic Kingdom</a>         <p><b>Dynasty</b><br>Ptolemaic Kingdom         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Ptolemy_II_Philadelphus target="_blank">Ptolemy II Philadelphus</a>         <br><a href=https://en.wikipedia.org/wiki/Ptolemy_V_Epiphanes target="_blank">Ptolemy V Epiphanes</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_2b1d837632135141221026103facbf5b.setContent(html_8360d934cce11f245804c35a3606a950);
+            
+        
+
+        marker_43a5f904e678df55b81d4bf4edad34ca.bindPopup(popup_2b1d837632135141221026103facbf5b)
+        ;
+
+        
+    
+    
+            marker_43a5f904e678df55b81d4bf4edad34ca.bindTooltip(
+                `<div>
+                     Temple of Philae
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bf863380e8f8d20865ba1d85b80ec85c = L.marker(
+                [24.030896981875426, 32.88014326066889],
+                {}
+            ).addTo(feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8);
+        
+    
+            var icon_180b1fe936c7ea6de663dd9202d01fdf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_bf863380e8f8d20865ba1d85b80ec85c.setIcon(icon_180b1fe936c7ea6de663dd9202d01fdf);
+        
+    
+        var popup_bd6094e58839f59448efef93075e742e = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_9864aa8c135653bd45efc02423355daf = $(`<div id="html_9864aa8c135653bd45efc02423355daf" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Debod</h2></b></center><br>         <p><b>Ancient location</b><br>Debod         <p><b>New location</b><br>Madrid         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Amun target="_blank">Amun</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Ptolemaic Kingdom</a>         <p><b>Dynasty</b><br>Ptolemaic Kingdom - Roman Period         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Adikhalamani target="_blank">Adikhalamani</a>         <br><a href=https://en.wikipedia.org/wiki/Ptolemy_VI target="_blank">Ptolemy VI</a>         <br><a href=https://en.wikipedia.org/wiki/Ptolemy_VIII target="_blank">Ptolemy VIII</a>         <br><a href=https://en.wikipedia.org/wiki/Ptolemy_XII target="_blank">Ptolemy XII</a>         <br><a href=https://en.wikipedia.org/wiki/Augustus target="_blank">Augustus</a>         <br><a href=https://en.wikipedia.org/wiki/Tiberius target="_blank">Tiberius</a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_bd6094e58839f59448efef93075e742e.setContent(html_9864aa8c135653bd45efc02423355daf);
+            
+        
+
+        marker_bf863380e8f8d20865ba1d85b80ec85c.bindPopup(popup_bd6094e58839f59448efef93075e742e)
+        ;
+
+        
+    
+    
+            marker_bf863380e8f8d20865ba1d85b80ec85c.bindTooltip(
+                `<div>
+                     Temple of Debod
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            var marker_11e07b829c72ea190c01b276a94a26f5 = L.marker(
+                [23.6, 32.816667],
+                {}
+            ).addTo(feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12);
+        
+    
+            var icon_206ff5b5df8820280b69e322b60a0099 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_11e07b829c72ea190c01b276a94a26f5.setIcon(icon_206ff5b5df8820280b69e322b60a0099);
+        
+    
+        var popup_4eabc8f22033df36547d5d98122bcf95 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_2409516fbac2ac4b410ca32030dcb750 = $(`<div id="html_2409516fbac2ac4b410ca32030dcb750" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Kalabsha</h2></b></center><br>         <p><b>Ancient location</b><br>Kalabsha         <p><b>New location</b><br>New Kalabsha         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Mandulis target="_blank">Merur</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Roman Period</a>         <p><b>Dynasty</b><br>Roman Period         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Augustus target="_blank">Augustus</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_4eabc8f22033df36547d5d98122bcf95.setContent(html_2409516fbac2ac4b410ca32030dcb750);
+            
+        
+
+        marker_11e07b829c72ea190c01b276a94a26f5.bindPopup(popup_4eabc8f22033df36547d5d98122bcf95)
+        ;
+
+        
+    
+    
+            marker_11e07b829c72ea190c01b276a94a26f5.bindTooltip(
+                `<div>
+                     Temple of Kalabsha
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f798430caf0959095279387c47e6e604 = L.marker(
+                [22.800667, 32.547597],
+                {}
+            ).addTo(feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12);
+        
+    
+            var icon_910394055d422d9732f4dfeebc49ca64 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f798430caf0959095279387c47e6e604.setIcon(icon_910394055d422d9732f4dfeebc49ca64);
+        
+    
+        var popup_d92ec555eb2242de7ff2bc5993725e76 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_525572d35ce80eda276fd8c21f8ec4fc = $(`<div id="html_525572d35ce80eda276fd8c21f8ec4fc" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Maharraqa</h2></b></center><br>         <p><b>Ancient location</b><br>Maharraqa         <p><b>New location</b><br>New Wadi es-Sebua         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Isis target="_blank">Isis</a>         <br><a href=https://en.wikipedia.org/wiki/Serapis target="_blank">Serapis</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Roman Period</a>         <p><b>Dynasty</b><br>Roman Period         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Augustus target="_blank">Augustus</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_d92ec555eb2242de7ff2bc5993725e76.setContent(html_525572d35ce80eda276fd8c21f8ec4fc);
+            
+        
+
+        marker_f798430caf0959095279387c47e6e604.bindPopup(popup_d92ec555eb2242de7ff2bc5993725e76)
+        ;
+
+        
+    
+    
+            marker_f798430caf0959095279387c47e6e604.bindTooltip(
+                `<div>
+                     Temple of Maharraqa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5fae5fd8a1d0aa440ac0bbf96ca77b35 = L.marker(
+                [23.383056, 32.95],
+                {}
+            ).addTo(feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12);
+        
+    
+            var icon_3ec9d7a633af303e9d90a887d895bc90 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5fae5fd8a1d0aa440ac0bbf96ca77b35.setIcon(icon_3ec9d7a633af303e9d90a887d895bc90);
+        
+    
+        var popup_ca94975627edd1e0c1ab2bc7d2368a07 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_f5bc8006118b2515d58b1724998d712a = $(`<div id="html_f5bc8006118b2515d58b1724998d712a" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Dendur</h2></b></center><br>         <p><b>Ancient location</b><br>Dendur         <p><b>New location</b><br>New York City         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Isis target="_blank">Isis</a>         <br><a href=  target="_blank">Pedesi</a>         <br><a href=  target="_blank">Pihor</a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Roman Period</a>         <p><b>Dynasty</b><br>Roman Period         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Augustus target="_blank">Augustus</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_ca94975627edd1e0c1ab2bc7d2368a07.setContent(html_f5bc8006118b2515d58b1724998d712a);
+            
+        
+
+        marker_5fae5fd8a1d0aa440ac0bbf96ca77b35.bindPopup(popup_ca94975627edd1e0c1ab2bc7d2368a07)
+        ;
+
+        
+    
+    
+            marker_5fae5fd8a1d0aa440ac0bbf96ca77b35.bindTooltip(
+                `<div>
+                     Temple of Dendur
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c1a0ad6cd3bcb5a83375d0633e358cb2 = L.marker(
+                [23.6197, 32.8721],
+                {}
+            ).addTo(feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12);
+        
+    
+            var icon_f97565f56aaae587b7f35086a732bf52 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "ankh", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c1a0ad6cd3bcb5a83375d0633e358cb2.setIcon(icon_f97565f56aaae587b7f35086a732bf52);
+        
+    
+        var popup_5db2bf33ef4ee5a6e24ea2f0c1cdb7e5 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            
+                var html_368bf338f1c507d9db505f0e42f2bbb9 = $(`<div id="html_368bf338f1c507d9db505f0e42f2bbb9" style="width: 100.0%; height: 100.0%;">          <center><b><h2>Temple of Taffeh</h2></b></center><br>         <p><b>Ancient location</b><br>Taffeh         <p><b>New location</b><br>Leiden         <p><b>Dedicated to</b>:<br><a href=https://en.wikipedia.org/wiki/Isis target="_blank">Isis</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <p><b>Period</b><br>Roman Period</a>         <p><b>Dynasty</b><br>Roman Period         <p><b>King</b>:         <br><a href=https://en.wikipedia.org/wiki/Augustus target="_blank">Augustus</a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         <br><a href=  target="_blank"> </a>         </div>`)[0];
+                popup_5db2bf33ef4ee5a6e24ea2f0c1cdb7e5.setContent(html_368bf338f1c507d9db505f0e42f2bbb9);
+            
+        
+
+        marker_c1a0ad6cd3bcb5a83375d0633e358cb2.bindPopup(popup_5db2bf33ef4ee5a6e24ea2f0c1cdb7e5)
+        ;
+
+        
+    
+    
+            marker_c1a0ad6cd3bcb5a83375d0633e358cb2.bindTooltip(
+                `<div>
+                     Temple of Taffeh
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var layer_control_9094dc19686e32cbaa722109fac6faf4_layers = {
+                base_layers : {
+                },
+                overlays :  {
+                    "New Kingdom" : feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e,
+                    "Ptolemaic Kingdom" : feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8,
+                    "Roman Period" : feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12,
+                },
+            };
+            let layer_control_9094dc19686e32cbaa722109fac6faf4 = L.control.layers(
+                layer_control_9094dc19686e32cbaa722109fac6faf4_layers.base_layers,
+                layer_control_9094dc19686e32cbaa722109fac6faf4_layers.overlays,
+                {"autoZIndex": true, "collapsed": false, "position": "topright"}
+            ).addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+
+        
+    
+            tile_layer_016b3743c967d7cc7925a10385be9330.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            marker_cluster_f6b533b27187915fa203399d26c81b07.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            feature_group_sub_group_45ee88ee1da4fb56d86c6b849c88ab9e.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            feature_group_sub_group_8d5506536dc3aafd403dee4a14190ad8.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+    
+            feature_group_sub_group_fabb24a6a40152fb741d12b94f8a0d12.addTo(map_55fc1a8f88512056bdf1475dd03ed075);
+        
+</script>
+</html>
