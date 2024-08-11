@@ -1,9 +1,7 @@
 import streamlit as st
-from PIL import Image
 
 def app():
     st.header("History of the relocation of the submerged temples of Nubia")
-    image = Image.open(r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\Kalabsha_water.jpg")
     col1, col2 = st.columns([3,1])
     with col1:
         st.write("""
@@ -16,7 +14,7 @@ def app():
     collapses and the loss of the polychromy where it had been preserved.
     """)
     with col2:
-        st.image(image, caption="The Temple of Kalabsha partially submerged")
+        st.image("Kalabsha_water.jpg", caption = "The Temple of Kalabsha almost submerged")
 
     st.subheader("The first Aswan Dam (1899-1902)")
     st.write("""
