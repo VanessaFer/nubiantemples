@@ -155,13 +155,20 @@ def app():
         tooltip=row['nome'],
         icon = icon
                     ).add_to(roman)
+
+    folium.plugins.Fullscreen(
+    position="topright",
+    title="Expand",
+    title_cancel="Exit",
+    force_separate_button=True,
+    ).add_to(m)
         
     folium.LayerControl(collapsed=False).add_to(m)
 
     st.header("Map of the submerged Nubian temples")
 
     #Aggiungere istruzioni di navigazione della mappa
-    folium_static(m, height=500,width=500)
+    folium_static(m, width=800, height=450)
     # import streamlit.components.v1 as components
     # with open("mappa_templi_nubiani.html",'r') as f: 
     #     html_data = f.read()
