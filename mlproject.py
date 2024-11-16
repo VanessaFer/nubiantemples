@@ -11,7 +11,7 @@ st.subheader("A Machine Learning model")
 
 tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
 
-ordine_comparizione = st.number_input("Digit the position",1,2,3,4,5)
+ordine_comparizione = st.number_input("Digit the position",value=None, placeholder="Type a number from 1 to 5")
 
 seduto_stante = st.radio("Select weather the deaity is seated or standing", ["seated", "standing"])
 
