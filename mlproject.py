@@ -4,10 +4,10 @@ import mysql.connector
 import joblib
 #pip install mysql-connector-python
 
-model_pipe = joblib.load("kalabsha_gods.pkl")
-
 st.header("Predict the God")
 st.subheader("A Machine Learning model")
+
+model_pipe = joblib.load("kalabsha_gods.pkl")
 
 tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
 
