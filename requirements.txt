@@ -6,3 +6,7 @@ mysql.connector
 folium
 numpy
 streamlit_folium
+joblib
+scikit-learn
+seaborn
+matplotlib.pyplot
