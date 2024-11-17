@@ -20,6 +20,54 @@ def app():
     with col4:
         st.image("Uadjet.png", caption = "The goddess Uadjet", width = 150)
 
+    st.write("""
+    This little Machine Learning project idea aims to create a model which can classify
+    the four deities who are depicted the most into the temple of Kalabsha.
+
+    These four deities are:
+    - Osiris
+    - Isis
+    - Merur
+    - Uadjet
+    as you can see in the pictures above.
+
+    It would be great to deepen this model with more data from other Nubian temples. 
+             Would the model be
+             capable to distinguish the Osiris of the temple of Kalabsha from the Osiris of the temple
+             of Philae?
+
+    Anyway! Below you can find some fields to fill with some characteristics of these deities,
+             a brief explanation of who they are, their crown and their accessories.
+
+    Have fun!
+             """)
+    
+    st.divider()
+
+    st.subheader("A brief introduction to the Four Deities")
+
+    st.html("""
+As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
+<br><b>Osiris</b> 
+<br>Osiris is the God of the Underworld. He has the form of a mummy: he wears a long
+            coat that covers his whole body, while he keeps the arms crossed on his chest.
+<br>However, in the temple of Kalabsha Osiris is usually drawn as all the other male deities. He
+            wears a skirt, sometimes combined with a corset on the upper part of his body.
+<br>In this temple he wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
+            feathers.
+            
+<br><b>Isis</b> 
+<br>Isis is the Goddess of Magic. She is the sister and the wife of Osiris.
+            <br>She wears a crown made by a solar disc between two cow horns. On the top of the solar
+            disc, there is the hyerogliph of the throne, that typically represents Isis.
+            
+<br><b>Merur</b> 
+<br>Merur is the local God of Kalabsha. He usually wears a crown made by three Atef Crowns, ram horns,
+            uraei and solar discs.
+            
+<br><b>Uadjet</b> 
+<br>Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
+""")
     model_pipe = joblib.load("kalabsha_gods.pkl")
 
     tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
