@@ -31,19 +31,16 @@ def app():
     tipologia_corona = st.selectbox("Select the crown type", 
                        ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
                         "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
-                        "pshent", "Lower Egypt crown", "headgear"])
+                        "pshent", "Lower Egypt crown"])
 
     tipologia_abito = st.selectbox("Select the dress type", 
                        ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"])
 
     nome_accessorio = st.selectbox("Select the accessory", 
-                       ['ankh', 'wadj-sceptre', 'necklace', 'wrist bracelet',
-       'arm bracelet', 'ankle bracelet', 'feet destroyed', 'destroyed',
-       'top of the sceptre destroyed', 'left hand destroyed',
-       'was-sceptre', 'neck destroyed', 'false beard',
-       'right hand destroyed', 'arms destroyed', 'face destroyed',
-       'necklace with jb-sign', 'Red Crown', 'garland',
-       'right hand raised', 'left hand raised', 'breeding Horus',
+                       ['wadj-sceptre', 'ankle bracelet',
+       'was-sceptre', 'false beard',
+       'necklace with jb-sign', 
+       'right hand raised', 'left hand raised',
        'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'])
 
     data = {
