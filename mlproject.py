@@ -72,6 +72,19 @@ As said before, below you can find some information about Osiris, Isis, Merur an
     st.divider()
 
     st.subheader("And now... predict the deity!")
+
+    st.html("""You can choose among several options. Select the ones that you like the most and let the machine learning model guess which deity is the one who has the characteristics that you selected!
+    <br>If you don't know what to choose, you can look at the pictures below and find some inspiration!""")
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.image("Osiris.png", caption = "The god Osiris", width = 150)
+    with col2:
+        st.image("Isis.png", caption = "The goddess Isis", width = 150)
+    with col3:
+        st.image("Merur.png", caption = "The god Merur", width = 150)
+    with col4:
+        st.image("Uadjet.png", caption = "The goddess Uadjet", width = 150)
     
     model_pipe = joblib.load("kalabsha_gods.pkl")
 
