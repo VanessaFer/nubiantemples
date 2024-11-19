@@ -76,6 +76,8 @@ As said before, below you can find some information about Osiris, Isis, Merur an
         st.image("Merur.png", caption = "The god Merur", width = 150)
     with col4:
         st.image("Uadjet.png", caption = "The goddess Uadjet", width = 150)
+
+    st.subheader("")
     
     model_pipe = joblib.load("kalabsha_gods.pkl")
 
