@@ -19,6 +19,7 @@ def app():
     - Isis
     - Merur
     - Uadjet
+    
     as you can see in the pictures above.
 
     It would be great to deepen this model with more data from other Nubian temples. 
