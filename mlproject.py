@@ -68,6 +68,11 @@ As said before, below you can find some information about Osiris, Isis, Merur an
 <br><b>Uadjet</b> 
 <br>Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
 """)
+
+    st.divider()
+
+    st.subheader("And now... predict the deity!")
+    
     model_pipe = joblib.load("kalabsha_gods.pkl")
 
     tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
