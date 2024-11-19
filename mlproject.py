@@ -10,16 +10,6 @@ def app():
     st.header("Predict the God")
     st.subheader("A Machine Learning model")
 
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.image("Osiris.png", caption = "The god Osiris", width = 150)
-    with col2:
-        st.image("Isis.png", caption = "The goddess Isis", width = 150)
-    with col3:
-        st.image("Merur.png", caption = "The god Merur", width = 150)
-    with col4:
-        st.image("Uadjet.png", caption = "The goddess Uadjet", width = 150)
-
     st.write("""
     This little Machine Learning project idea aims to create a model which can classify
     the four deities who are depicted the most into the temple of Kalabsha.
