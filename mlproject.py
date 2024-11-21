@@ -80,20 +80,25 @@ As said before, below you can find some information about Osiris, Isis, Merur an
     model_pipe = joblib.load("kalabsha_gods.pkl")
 
     tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
+    st.write("You selected:", tipologia_personaggio)
 
     ordine_comparizione = st.number_input("Digit the position",value=None, placeholder="Type a number from 1 to 5")
+    st.write("You selected:", ordine_comparizione)
 
     seduto_stante = st.radio("Select weather the deity is seated or standing", ["seated", "standing"])
+    st.write("You selected:", seduto_stante)
 
     tipologia_corona = st.selectbox("Select the crown type", 
                        ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
                         "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
                         "pshent", "Lower Egypt crown"],
-                                   placeholder = "Pick one from the list of crowns")
+                                   placeholder = "Pick one from the list of crowns",)
+    st.write("You selected:", tipologia_corona)
 
     tipologia_abito = st.selectbox("Select the dress type", 
                        ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"],
-                                  placeholder = "Pick one from the list of dresses")
+                                  placeholder = "Pick one from the list of dresses",)
+    st.write("You selected:", tipologia_abito)
 
     nome_accessorio = st.selectbox("Select the accessory", 
                        ['wadj-sceptre', 'ankle bracelet',
@@ -101,7 +106,8 @@ As said before, below you can find some information about Osiris, Isis, Merur an
        'necklace with jb-sign', 
        'right hand raised', 'left hand raised',
        'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'],
-                                  placeholder = "Pick one from the accessory list")
+                                  placeholder = "Pick one from the accessory list",)
+    st.write("You selected:", nome_accessorio)
 
     data = {
         "tipologia_personaggio": [tipologia_personaggio],
