@@ -38,24 +38,24 @@ def app():
     st.html("""
 As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
 <br><br><b><h5>Osiris</h5></b> 
-<br>Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
+Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
             coat that covers his whole body, while he keeps the arms crossed on his chest.
 <br>However, in the temple of Kalabsha Osiris is usually drawn as all the other male deities. He
             wears a skirt, sometimes combined with a corset on the upper part of his body.
 <br>In this temple he wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
             feathers.
             
-<br><b>Isis</b> 
-<br>Isis is the Goddess of Magic. She is the sister and the wife of Osiris.
+<br><b><h5>Isis</h5></b> 
+Isis is the Goddess of Magic. She is the sister and the wife of Osiris.
             <br>She wears a crown made by a solar disc between two cow horns. On the top of the solar
             disc, there is the hyerogliph of the throne, that typically represents Isis.
             
-<br><b>Merur</b> 
-<br>Merur is the local God of Kalabsha. He usually wears a crown made by three Atef Crowns, ram horns,
+<br><b><h5>Merur</h5></b> 
+Merur is the local God of Kalabsha. He usually wears a crown made by three Atef Crowns, ram horns,
             uraei and solar discs.
             
-<br><b>Uadjet</b> 
-<br>Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
+<br><b><h5>Uadjet</h5></b> 
+Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
 """)
 
     st.divider()
