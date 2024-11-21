@@ -11,7 +11,7 @@ def app():
     st.subheader("The origins of the idea")
     col1, col2 = st.columns(2)
     with col1:
-        st.html("""I studied the temple of Kalabsha for my MA thesis. At that time, I created a 2D representation of the walls of the temple with Rhynoceros 3D,
+        st.html("""I studied the temple of Kalabsha for my MA thesis. I created a 2D representation of the walls of the temple with Rhynoceros 3D,
     using the dimensions indicated by Henri Gauthier in his publication. 
     <br>It was useful, for sure: I had the possibility get an idea thanks to the graphic version of the scenes described by Gauthier. 
     Those still have a limit: it is not possible interact with them to have extra information.
