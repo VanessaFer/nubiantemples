@@ -17,7 +17,7 @@ def app():
     Those still have a limit: one can't interact with them in order to have extra information.
     <br>""")
     with col2:
-        st.image("Cella.png", caption = "The 2D version of the Cella")
+        st.image("Cella.PNG", caption = "The 2D version of the Cella")
 
     
     components.html("""
