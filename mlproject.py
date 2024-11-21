@@ -129,6 +129,7 @@ As said before, below you can find some information about Osiris, Isis, Merur an
         y_pred = classes[res]
 
         st.success(f'The name of the deity is: {y_pred}.')
+        
 # def app():
 #     st.header("The Temple of Kalabsha")
 #     st.subheader("*A Database of all the offering scenes of the temple*")
