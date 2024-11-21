@@ -36,7 +36,7 @@ def app():
     st.header("A brief introduction to the Four Deities")
 
     st.html("""
-As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
+As said before, below you can find some information about Osiris, Isis, Merur and Uadjet.
 <br><br><b><h5>Osiris</h5></b> 
 Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
             coat that covers his whole body, while he keeps the arms crossed on his chest.
