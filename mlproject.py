@@ -7,8 +7,8 @@ import sklearn as sk
 #pip install mysql-connector-python
 def app():
 
-    st.header("Predict the God")
-    st.subheader("A Machine Learning model")
+    st.title("Predict the God")
+    st.header("A Machine Learning model")
 
     st.write("""
     This little Machine Learning project idea aims to create a model which can classify
@@ -35,7 +35,7 @@ def app():
     
     st.divider()
 
-    st.subheader("A brief introduction to the Four Deities")
+    st.header("A brief introduction to the Four Deities")
 
     st.html("""
 As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
@@ -62,7 +62,7 @@ As said before, below you can find some information about Osiris, Isis, Merur an
 
     st.divider()
 
-    st.subheader("And now... predict the deity!")
+    st.header("And now... predict the deity!")
 
     st.html("""You can choose among several options. Select the ones that you like the most and let the machine learning model guess which deity is the one who has the characteristics that you selected!
     <br>If you don't know what to choose, you can look at the pictures below and find some inspiration!""")
