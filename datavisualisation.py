@@ -3,21 +3,21 @@ import streamlit.components.v1 as components
 
 def app():
 
-    st.header("Data Visualisation")
+    st.title("Data Visualisation")
     
     #components.iframe("https://public.tableau.com/views/DeitiesandKingsofthetempleofKalabsha/Dashboard1?:language=it-IT&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link", height=500)
-    st.subheader("A jump into the data of the temple of Kalabsha")
+    st.header("A jump into the data of the temple of Kalabsha")
 
-    
+    st.subheader("The origins of the idea")
     col1, col2 = st.columns(2)
     with col1:
-        st.write("""I studied the temple of Kalabsha for my MA thesis. At that time, I created a 2D representation of the walls of the temple with Rhynoceros 3D,
+        st.html("""I studied the temple of Kalabsha for my MA thesis. At that time, I created a 2D representation of the walls of the temple with Rhynoceros 3D,
     using the dimensions indicated by Henri Gauthier in his publication. 
     <br>It was useful, for sure: I had the possibility get an idea thanks to the graphic version of the scenes described by Gauthier. 
-    Those still have a limit: one can't interact with them in order to have extra information.
+    Those still have a limit: it is not possible interact with them to have extra information.
     <br>""")
     with col2:
-        st.image("Cella.PNG", caption = "The 2D version of the Cella")
+        st.image("Cella.PNG", caption = "The 2D version of the four walls of the Cella")
 
     
     components.html("""
