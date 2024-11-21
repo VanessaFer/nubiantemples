@@ -81,7 +81,7 @@ As said before, below you can find some information about Osiris, Isis, Merur an
 
     tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
 
-    ordine_comparizione = st.number_input("Digit the position",value=None, value = int, placeholder="Type a number from 1 to 5")
+    ordine_comparizione = st.number_input("Digit the position",value=int, placeholder="Type a number from 1 to 5")
 
     seduto_stante = st.radio("Select weather the deity is seated or standing", ["seated", "standing"])
 
