@@ -1,7 +1,7 @@
 import streamlit as st
 
 def app():
-    st.header("History of the relocation of the submerged temples of Nubia")
+    st.title("History of the relocation of the submerged temples of Nubia")
     col1, col2 = st.columns([3,1])
     with col1:
         st.write("""
