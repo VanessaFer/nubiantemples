@@ -37,8 +37,8 @@ def app():
 
     st.html("""
 As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
-<br><b>Osiris</b> 
-<br>Osiris is the God of the Underworld. He has the form of a mummy: he wears a long
+<br><br><b><h4>Osiris</h4></b> 
+<br>Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
             coat that covers his whole body, while he keeps the arms crossed on his chest.
 <br>However, in the temple of Kalabsha Osiris is usually drawn as all the other male deities. He
             wears a skirt, sometimes combined with a corset on the upper part of his body.
