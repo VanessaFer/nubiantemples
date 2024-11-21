@@ -165,7 +165,7 @@ def app():
         
     folium.LayerControl(collapsed=False).add_to(m)
 
-    st.header("Map of the submerged Nubian temples")
+    st.title("Map of the submerged Nubian temples")
 
     #Aggiungere istruzioni di navigazione della mappa
     folium_static(m, width=800, height=450)
