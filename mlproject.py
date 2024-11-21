@@ -77,10 +77,6 @@ As said before, below you can find some information about Osiris, Isis, Merur an
     with col4:
         st.image("Uadjet.png", caption = "The goddess Uadjet", width = 150)
 
-    st.html("""Here is a short guide to the crowns and the accessories worn by the deities:
-    - 
-    """)
-
     st.subheader("")
     
     model_pipe = joblib.load("kalabsha_gods.pkl")
