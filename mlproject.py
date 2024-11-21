@@ -91,11 +91,11 @@ As said before, below you can find some information about Osiris, Isis, Merur an
     tipologia_corona = st.selectbox("Select the crown type", 
                        ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
                         "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
-                        "pshent", "Lower Egypt crown"], placeholder = "Pick one from the list of crowns",)
+                        "pshent", "Lower Egypt crown"], placeholder="Pick one from the list of crowns",)
     st.write("You selected:", tipologia_corona)
 
     tipologia_abito = st.selectbox("Select the dress type", 
-                       ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"], placeholder = "Pick one from the list of dresses",)
+                       ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"], placeholder="Pick one from the list of dresses",)
     st.write("You selected:", tipologia_abito)
 
     nome_accessorio = st.selectbox("Select the accessory", 
@@ -103,7 +103,7 @@ As said before, below you can find some information about Osiris, Isis, Merur an
        'was-sceptre', 'false beard',
        'necklace with jb-sign', 
        'right hand raised', 'left hand raised',
-       'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'], placeholder = "Pick one from the accessory list",)
+       'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'], placeholder="Pick one from the accessory list",)
     st.write("You selected:", nome_accessorio)
 
     data = {
