@@ -41,8 +41,8 @@ As said before, below you can find some information about Osiris, Isis, Merur an
 Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
             coat that covers his whole body, while he keeps the arms crossed on his chest.
 <br>However, in the temple of Kalabsha Osiris is often drawn as most of the other kings and male deities. He
-            wears a skirt, sometimes combined with a corset on the upper part of his body.
-<br>In this temple he wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
+            wears a skirt, sometimes combined with a corset worn on the upper part of his body.
+<br>In this temple he generally wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
             feathers.
             
 <br><br><b><h5>Isis</h5></b> 
