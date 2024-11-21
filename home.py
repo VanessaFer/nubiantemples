@@ -20,6 +20,7 @@ def app():
 
     - Temple of Amada
     - Temple of Beit el-Wali
+    - Temple of Bigeh
     - Temple of Dakka
     - Temple of Debod
     - Temple of Dendur
