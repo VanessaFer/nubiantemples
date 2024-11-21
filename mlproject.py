@@ -88,17 +88,20 @@ As said before, below you can find some information about Osiris, Isis, Merur an
     tipologia_corona = st.selectbox("Select the crown type", 
                        ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
                         "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
-                        "pshent", "Lower Egypt crown"])
+                        "pshent", "Lower Egypt crown"],
+                                   placeholder = "Pick one from the list of crowns")
 
     tipologia_abito = st.selectbox("Select the dress type", 
-                       ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"])
+                       ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"],
+                                  placeholder = "Pick one from the list of dresses")
 
     nome_accessorio = st.selectbox("Select the accessory", 
                        ['wadj-sceptre', 'ankle bracelet',
        'was-sceptre', 'false beard',
        'necklace with jb-sign', 
        'right hand raised', 'left hand raised',
-       'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'])
+       'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'],
+                                  placeholder = "Pick one from the accessory list")
 
     data = {
         "tipologia_personaggio": [tipologia_personaggio],
