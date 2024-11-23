@@ -3,7 +3,7 @@ from PIL import Image
 from streamlit_option_menu import option_menu
 #crea il menù a lato della webapp
 
-import contacts, mlproject, history, home, map, datavisualisation, database
+import contacts, mlproject, history, home, map, datavisualisation, databasekalabsha
 #non scrivere il .py
 
 im = Image.open("icona_sito1.png")
@@ -49,7 +49,7 @@ class MultiApp:
         if app == "Machine Learning Project":
             mlproject.app()
         if app == "Database":
-            mlproject.app()  
+            databasekalabsha.app()  
         if app == "Data Visualisation":
             datavisualisation.app()
         if app == "Contacts":
