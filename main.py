@@ -3,7 +3,7 @@ from PIL import Image
 from streamlit_option_menu import option_menu
 #crea il menù a lato della webapp
 
-import contacts, mlproject, history, home, map, datavisualisation
+import contacts, mlproject, history, home, map, datavisualisation, database
 #non scrivere il .py
 
 im = Image.open("icona_sito1.png")
@@ -27,8 +27,8 @@ class MultiApp:
         with st.sidebar:
             app = option_menu(
                 menu_title = "Menu",
-                options = ["Home", "History", "Map", "Machine Learning Project", "Data Visualisation", "Contacts"],
-                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-box","bi-database", "bi-envelope"],
+                options = ["Home", "History", "Map", "Machine Learning Project", "Database", "Data Visualisation", "Contacts"],
+                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-box", "bi-database", "bar-chart", "bi-envelope"],
                 #orientation = "horizontal",
                 menu_icon = "bi-list",
                 default_index = 0,
@@ -48,6 +48,8 @@ class MultiApp:
             map.app()
         if app == "Machine Learning Project":
             mlproject.app()
+        if app == "Database":
+            mlproject.app()  
         if app == "Data Visualisation":
             datavisualisation.app()
         if app == "Contacts":
