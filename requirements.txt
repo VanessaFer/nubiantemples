@@ -2,9 +2,9 @@ streamlit
 streamlit_option_menu
 pandas
 pillow
-mysql.connector
 folium
 numpy
 streamlit_folium
 joblib
 scikit-learn
+io
