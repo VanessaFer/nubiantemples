@@ -7,4 +7,3 @@ numpy
 streamlit_folium
 joblib
 scikit-learn
-io
