@@ -1,9 +1,5 @@
 import streamlit as st
 import pandas as pd
-import mysql.connector
-import sqlalchemy
-import sqlite3
-from sqlite3 import connect
 import io
 #pip install mysql-connector-python
 
