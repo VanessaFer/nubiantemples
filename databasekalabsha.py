@@ -54,14 +54,7 @@ def app():
         st_df_scene = st.dataframe(df_scene, hide_index=True)
         print(st_df_scene)
 
-        df1 = pd.read_excel('SCENA_BIBLIOGRAFIA.xlsx')
-            # df = df.loc[:,~df.columns.duplicated()]
-        df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
-        df_bibl = df1.loc[df1['sceneAcronym'] == codice_scena]
-        #df_scene = df.drop_duplicates
-        st_df_bibl = st.dataframe(df_bibl, hide_index=True)
-        print(st_df_bibl)
-
+         #### PERSONAGGIO ####
         df2 = pd.read_excel('SCENA_PERSONAGGIO.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
@@ -69,6 +62,14 @@ def app():
         #df_scene = df.drop_duplicates
         st_df_char = st.dataframe(df_char, hide_index=True)
         print(st_df_char)
+        
+        df1 = pd.read_excel('SCENA_BIBLIOGRAFIA.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
+        df_bibl = df1.loc[df1['sceneAcronym'] == codice_scena]
+        #df_scene = df.drop_duplicates
+        st_df_bibl = st.dataframe(df_bibl, hide_index=True)
+        print(st_df_bibl)
 
         # @st.cache_data
         # def convert_df(df_scene, df_bibl, df_char):
