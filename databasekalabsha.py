@@ -224,7 +224,7 @@ def app():
         df2 = pd.read_excel('SCENA_PERSONAGGIO.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
-        df2 = df2[~df2.characterType.str.contains("king")]
+        #df2 = df2[~df2.characterType.str.contains("king")]
         df_deity = df2.loc[df2['name'] == deity_name]
         #df_scene = df.drop_duplicates
         st_df_deity = st.dataframe(df_deity, hide_index=True)
