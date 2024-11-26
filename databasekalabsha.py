@@ -102,7 +102,8 @@ def app():
         for index, row in df_img.iterrows():
             if row['nome_tavola'] == plate:
                 url = f"{row['link_drive']}"
-                html = f'<img src = {url}>'
+                html_code = f'<img src = {url}>'
+                st.markdown(html_code, unsafe_allow_html=True)
         #df_img = df_img['link_drive']
         # html_str = f"{df_img}"
         # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
