@@ -104,7 +104,10 @@ def app():
         
         df_img = pd.read_csv("tavole.csv")
         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
-        st.image(df_img[0])
+        st.image(
+            "https://drive.google.com/file/d/1AteG-RZ4ua3ffpFQP1qvhTy7XO0qfS-S/view?usp=drive_link",
+            width=400, # Manually Adjust the width of the image as per requirement
+        )
 
         def make_clickable(link):
             # target _blank to open new window
