@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+# import mysql.connector
+# import sqlalchemy
+# import sqlite3
+# from sqlite3 import connect
 import io
 #pip install mysql-connector-python
 
@@ -45,7 +49,9 @@ def app():
         st.html("""You can write a scene code between KB1 and KB139.""")
         codice_scena = st.text_input("Scene code")
         st.write("You wrote:", codice_scena)
-        #codice = f"{codice_scena}"
+
+        st.write("")
+        st.write("SCENE")
         df = pd.read_excel('scena_stanze_registro_titolo.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
@@ -54,7 +60,8 @@ def app():
         st_df_scene = st.dataframe(df_scene, hide_index=True)
         print(st_df_scene)
 
-         #### PERSONAGGIO ####
+        st.write("")
+        st.write("CHARACTERS")
         df2 = pd.read_excel('SCENA_PERSONAGGIO.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
@@ -62,7 +69,9 @@ def app():
         #df_scene = df.drop_duplicates
         st_df_char = st.dataframe(df_char, hide_index=True)
         print(st_df_char)
-        
+
+        st.write("")
+        st.write("BIBLIOGRAPHY")
         df1 = pd.read_excel('SCENA_BIBLIOGRAFIA.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
@@ -71,12 +80,6 @@ def app():
         st_df_bibl = st.dataframe(df_bibl, hide_index=True)
         print(st_df_bibl)
 
-        # @st.cache_data
-        # def convert_df(df_scene, df_bibl, df_char):
-        #     df_final = 
-        #     return df_final.to_csv().encode("utf-8")
-        # csv = convert_df(df_scene, df_bibl, df_char)
-        # create a excel writer object
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
    
@@ -92,36 +95,60 @@ def app():
                 data=buffer,
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
+        
+        st.write("")
+        st.write("PLATES")
+        plate = st.text_input("Plate number")
+        st.write("You wrote:", plate)
+        df_img = pd.read_csv("tavole.csv")
+        st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
+        st_df_img1 = st.data_editor(
+            st_df_img,
+            column_config={
+                "tav": st.column_config.LinkColumn(
+                    "nome_tavola",
+                    help="Nome tavola",
+                    validate=r"^https://[a-z]+\.streamlit\.app$",
+                    max_chars=100,
+                    display_text=r"https://(.*?)\.streamlit\.app"
+                ),
+                "link": st.column_config.LinkColumn(
+                    "link_drive", display_text="Open image"
+                ),
+            },
+            hide_index=True,
+        )
+        
 
-         st.write("")
-         st.write("PLATES")
-         plate = st.text_input("Plate number")
-         st.write("You wrote:", plate)
-         df_img = pd.read_csv("tavole.csv")
-         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
-         st_df_img1 = st.data_editor(
-             st_df_img,
-                column_config={
-                    "tav": st.column_config.LinkColumn(
-                        "nome_tavola",
-                        help="Nome tavola",
-                        validate=r"^https://[a-z]+\.streamlit\.app$",
-                        max_chars=100,
-                        display_text=r"https://(.*?)\.streamlit\.app"
-                    ),
-                    "link": st.column_config.LinkColumn(
-                        "link_drive", display_text="Open image"
-                    ),
-                },
-                hide_index=True,
-            )
-        #df_img = df_img['link_drive']
-        # html_str = f"{df_img}"
-        # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
-        # st.link_button("Go to plate", df_img)
+        #########BUONOOOOOOOOOO###########
+        # for index, row in df_img.iterrows():
+        #     if row['nome_tavola'] == plate:
+        #         url = f"{row['link_drive']}"
+        #         html_code = f'<a href = {url}>Click me!</a>'
+        #         st.markdown(html_code, unsafe_allow_html=True)
+        #######################################################################
+        # #df_img = df_img['link_drive']
+        # # html_str = f"{df_img}"
+        # # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
+        # # st.link_button("Go to plate", df_img)
+        # def make_clickable(val):
+        #     return '<a href="{}">{}</a>'.format(val,val)
 
+        # df_img.style.format({'link_drive': make_clickable})
+
+        #df_scene = df.drop_duplicates
+        #st_df_img = st.image(df_scene, hide_index=True)
+        # for index, row in df.iterrows():
+        #     img = f"{row['link_drive']}"
+        #print(st_df_scene)
+        # for index, row in df.iterrows():
+        #         if row['nome_tavola'] == plate:
+        #             img = f"{row['link_drive']}"
+        #             html = f'<img src={img}>'
+
+        
     with tab2:
-        st.header("Deity's name")
+        #st.header("Deity's name")
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
@@ -173,5 +200,3 @@ def app():
                     - Uadjet<br>
 """)
         st.html("""Select the deity you are interested in!""")
-
-
