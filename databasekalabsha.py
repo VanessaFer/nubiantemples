@@ -93,17 +93,28 @@ def app():
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
 
-        st.write("")
+       st.write("")
         st.write("PLATES")
         plate = st.text_input("Plate number")
         st.write("You wrote:", plate)
         df_img = pd.read_csv("tavole.csv")
-        #df_img = df_img.loc[df_img['nome_tavola'] == plate]
-        for index, row in df_img.iterrows():
-            if row['nome_tavola'] == plate:
-                url = f"{row['link_drive']}"
-                html_code = f'<img src = {url}>'
-                st.markdown(html_code, unsafe_allow_html=True)
+        st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
+        st_df_img1 = st.data_editor(
+            st_df_img,
+            column_config={
+                "tav": st.column_config.LinkColumn(
+                    "nome_tavola",
+                    help="Nome tavola",
+                    validate=r"^https://[a-z]+\.streamlit\.app$",
+                    max_chars=100,
+                    display_text=r"https://(.*?)\.streamlit\.app"
+                ),
+                "link": st.column_config.LinkColumn(
+                    "link_drive", display_text="Open image"
+                ),
+            },
+            hide_index=True,
+        )
         #df_img = df_img['link_drive']
         # html_str = f"{df_img}"
         # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
