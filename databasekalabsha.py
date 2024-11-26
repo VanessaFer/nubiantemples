@@ -101,10 +101,10 @@ def app():
         st.write("PLATES")
         plate = st.text_input("Plate number")
         st.write("You wrote:", plate)
-        st.image(plate)
         
         df_img = pd.read_csv("tavole.csv")
         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
+        st.image(df_img[0]), width = 400)
 
         def make_clickable(link):
             # target _blank to open new window
