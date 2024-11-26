@@ -212,4 +212,36 @@ def app():
                     - Thot<br>
                     - Uadjet<br>
 """)
-        st.html("""Select the deity you are interested in!""")
+        
+        st.divider()
+        st.subheader("Wirte the name of the deity")
+        st.html("""You can write one of the names you from the list above""")
+        deity_name = st.text_input("Deity name")
+        st.write("You wrote:", deity_name)
+
+        st.write("")
+        st.write("DEITY")
+        df2 = pd.read_excel('SCENA_PERSONAGGIO.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
+        df2 = df2[~df2.characterType.str.contains("king")]
+        df_deity = df2.loc[df2['name'] == deity_name]
+        #df_scene = df.drop_duplicates
+        st_df_deity = st.dataframe(df_deity, hide_index=True)
+        print(st_df_char)
+
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+    # use to_excel function and specify the sheet_name and index 
+    # to store the dataframe in specified sheet
+            df_deity.to_excel(writer, sheet_name="Scene", index=False)
+            #df_bibl.to_excel(writer, sheet_name="Bibliography", index=False)
+            #df_char.to_excel(writer, sheet_name="Characters", index=False)
+        writer.close()
+
+        st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_deity.xlsx",
+                mime="text/Excel",)
