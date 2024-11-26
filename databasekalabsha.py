@@ -76,8 +76,9 @@ def app():
             # df = df.loc[:,~df.columns.duplicated()]
         df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
         df_bibl = df1.loc[df1['sceneAcronym'] == codice_scena]
+        #df_bibl["publicationYear"] = df_bibl["publicationYear"].astype(str)
         #df_scene = df.drop_duplicates
-        st_df_bibl = st.dataframe(df_bibl, hide_index=True)
+        st_df_bibl = st.dataframe(df_bibl.style.format(precision = 0, thousands=''), hide_index=True)
         print(st_df_bibl)
 
         buffer = io.BytesIO()
@@ -95,71 +96,35 @@ def app():
                 data=buffer,
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
-        
-        from IPython.core.display import display, HTML
+    
         st.write("")
         st.write("PLATES")
         plate = st.text_input("Plate number")
-        st.write("You wrote:", plate)
-        
         df_img = pd.read_csv("tavole.csv")
-        st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
 
-        def make_clickable(link):
-            # target _blank to open new window
-            # extract clickable text to display for your link
-            text = link.split('=')[0]
-            return f'<a target="_blank" href="{link}">{text}</a>'
-        st_df_img['link_drive'] = st_df_img['link_drive'].apply(make_clickable)
+        if (df_img["nome_tavola"] == plate).any():
+                left_co, cent_co,last_co = st.columns(3)
+                with cent_co:
+                    st.markdown(
+                        """
+                        <style>
+                            button[title^=Exit]+div [data-testid=stImage]{
+                                text-align: center;
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 100%;
+                            }
+                        </style>
+                        """, unsafe_allow_html=True
+                    )
 
-        st.write(st_df_img.to_html(escape=False, index=False), unsafe_allow_html=True)
-        
-        
-
-        # st_df_img1 = st.data_editor(
-        #     st_df_img,
-        #     column_config={
-        #         "tav": st.column_config.LinkColumn(
-        #             "nome_tavola",
-        #             help="Nome tavola",
-        #             validate=r"^https://[a-z]+\.streamlit\.app$",
-        #             max_chars=100,
-        #             display_text=r"https://(.*?)\.streamlit\.app"
-        #         ),
-        #         "link": st.column_config.LinkColumn(
-        #             "link_drive", display_text="Open image"
-        #         ),
-        #     },
-        #     hide_index=True,
-        # )
-        
-
-        #########BUONOOOOOOOOOO###########
-        # for index, row in df_img.iterrows():
-        #     if row['nome_tavola'] == plate:
-        #         url = f"{row['link_drive']}"
-        #         html_code = f'<a href = {url}>Click me!</a>'
-        #         st.markdown(html_code, unsafe_allow_html=True)
-        #######################################################################
-        # #df_img = df_img['link_drive']
-        # # html_str = f"{df_img}"
-        # # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
-        # # st.link_button("Go to plate", df_img)
-        # def make_clickable(val):
-        #     return '<a href="{}">{}</a>'.format(val,val)
-
-        # df_img.style.format({'link_drive': make_clickable})
-
-        #df_scene = df.drop_duplicates
-        #st_df_img = st.image(df_scene, hide_index=True)
-        # for index, row in df.iterrows():
-        #     img = f"{row['link_drive']}"
-        #print(st_df_scene)
-        # for index, row in df.iterrows():
-        #         if row['nome_tavola'] == plate:
-        #             img = f"{row['link_drive']}"
-        #             html = f'<img src={img}>'
-
+                    #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
+                    #for i in tavole:
+                        #img = ImageOps.exif_transpose(i)
+                    st.image(f'tavole_Gauthier/{plate}', width = 450)
+                    st.info(f'{plate}')
+                    #st.image(f'tavole_Gauthier/{plate}', width = 450)
         
     with tab2:
         #st.header("Deity's name")
@@ -213,36 +178,4 @@ def app():
                     - Thot<br>
                     - Uadjet<br>
 """)
-        
-        st.divider()
-        st.subheader("Wirte the name of the deity")
-        st.html("""You can write one of the names you from the list above""")
-        deity_name = st.text_input("Deity name")
-        st.write("You wrote:", deity_name)
-
-        st.write("")
-        st.write("DEITY")
-        df2 = pd.read_excel('SCENA_PERSONAGGIO.xlsx')
-            # df = df.loc[:,~df.columns.duplicated()]
-        df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
-        #df2 = df2[~df2.characterType.str.contains("king")]
-        df_deity = df2.loc[df2['name'] == deity_name]
-        #df_scene = df.drop_duplicates
-        st_df_deity = st.dataframe(df_deity, hide_index=True)
-        print(st_df_char)
-
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
-   
-    # use to_excel function and specify the sheet_name and index 
-    # to store the dataframe in specified sheet
-            df_deity.to_excel(writer, sheet_name="Scene", index=False)
-            #df_bibl.to_excel(writer, sheet_name="Bibliography", index=False)
-            #df_char.to_excel(writer, sheet_name="Characters", index=False)
-        writer.close()
-
-        st.download_button(
-                label="Download table as Excel file",
-                data=buffer,
-                file_name="kalabsha_deity.xlsx",
-                mime="text/Excel",)
+        st.html("""Select the deity you are interested in!""")
