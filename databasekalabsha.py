@@ -96,28 +96,41 @@ def app():
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
         
+        from IPython.core.display import display, HTML
         st.write("")
         st.write("PLATES")
         plate = st.text_input("Plate number")
         st.write("You wrote:", plate)
         df_img = pd.read_csv("tavole.csv")
         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
-        st_df_img1 = st.data_editor(
-            st_df_img,
-            column_config={
-                "tav": st.column_config.LinkColumn(
-                    "nome_tavola",
-                    help="Nome tavola",
-                    validate=r"^https://[a-z]+\.streamlit\.app$",
-                    max_chars=100,
-                    display_text=r"https://(.*?)\.streamlit\.app"
-                ),
-                "link": st.column_config.LinkColumn(
-                    "link_drive", display_text="Open image"
-                ),
-            },
-            hide_index=True,
-        )
+
+        def make_clickable(link):
+            # target _blank to open new window
+            # extract clickable text to display for your link
+            text = link.split('=')[0]
+            return f'<a target="_blank" href="{link}">{text}</a>'
+        st_df_img['link_drive'] = st_df_img['link_drive'].apply(make_clickable)
+
+        st.write(st_df_img.to_html(escape=False, index=False), unsafe_allow_html=True)
+        
+        
+
+        # st_df_img1 = st.data_editor(
+        #     st_df_img,
+        #     column_config={
+        #         "tav": st.column_config.LinkColumn(
+        #             "nome_tavola",
+        #             help="Nome tavola",
+        #             validate=r"^https://[a-z]+\.streamlit\.app$",
+        #             max_chars=100,
+        #             display_text=r"https://(.*?)\.streamlit\.app"
+        #         ),
+        #         "link": st.column_config.LinkColumn(
+        #             "link_drive", display_text="Open image"
+        #         ),
+        #     },
+        #     hide_index=True,
+        # )
         
 
         #########BUONOOOOOOOOOO###########
