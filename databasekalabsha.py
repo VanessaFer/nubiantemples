@@ -107,8 +107,8 @@ def app():
             return '<a href="{}">{}</a>'.format(val,val)
 
         df_img = df_img.style.format({'link_drive': make_clickable})
-        st_df_img = st.dataframe(df_img, hide_index = True)
-        print(st_df_img)
+        #st_df_img = st.dataframe(df_img, hide_index = True)
+        print(df_img)
 
     with tab2:
         st.header("Deity's name")
