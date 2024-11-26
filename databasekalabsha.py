@@ -104,7 +104,7 @@ def app():
         
         df_img = pd.read_csv("tavole.csv")
         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
-        st.image(df_img[0]), width = 400)
+        st.image(df_img[0])
 
         def make_clickable(link):
             # target _blank to open new window
