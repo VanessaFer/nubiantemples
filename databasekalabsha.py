@@ -101,6 +101,8 @@ def app():
         st.write("PLATES")
         plate = st.text_input("Plate number")
         st.write("You wrote:", plate)
+        st.image(plate)
+        
         df_img = pd.read_csv("tavole.csv")
         st_df_img = df_img.loc[df_img['nome_tavola'] == plate]
 
