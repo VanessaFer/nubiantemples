@@ -98,17 +98,15 @@ def app():
         plate = st.text_input("Plate number")
         st.write("You wrote:", plate)
         df_img = pd.read_csv("tavole.csv")
-        df_img = df_img.loc[df_img['nome_tavola'] == plate]
+        #df_img = df_img.loc[df_img['nome_tavola'] == plate]
+        for index, row in df_img.iterrows():
+            if row['nome_tavola'] == plate:
+                url = f"{row['link_drive']}"
+                html = f'<img src = {url}>'
         #df_img = df_img['link_drive']
         # html_str = f"{df_img}"
         # url = 'https://drive.google.com/file/d/1XQVu9M0Ic3VNa0T2KxHUh_theI6CHD3_/view?usp=drive_link'
         # st.link_button("Go to plate", df_img)
-        def make_clickable(val):
-            return '<a href="{}">{}</a>'.format(val,val)
-
-        df_img = df_img.style.format({'link_drive': make_clickable})
-        #st_df_img = st.dataframe(df_img, hide_index = True)
-        print(df_img)
 
     with tab2:
         st.header("Deity's name")
