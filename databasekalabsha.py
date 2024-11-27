@@ -100,8 +100,9 @@ def app():
         st.write("")
         st.write("PLATES")
         plate = st.text_input("Plate number")
+        plate = "Tav. " + plate + ".jpg" ################################################################
         df_img = pd.read_csv("tavole.csv")
-
+        
         if (df_img["nome_tavola"] == plate).any():
                 left_co, cent_co,last_co = st.columns(3)
                 with cent_co:
