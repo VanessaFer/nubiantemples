@@ -99,6 +99,8 @@ def app():
     
         st.write("")
         st.write("PLATES")
+        st.html("""Would like to look at the plate from Gauthier's publication found in the Bibliography table?
+                <br>Digit its number below!""")
         plate = st.text_input("Plate number")
         plate = "Tav. " + plate + ".jpg" ################################################################
         df_img = pd.read_csv("tavole.csv")
@@ -128,7 +130,7 @@ def app():
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
         
     with tab2:
-        #st.header("Deity's name")
+        st.header("Deity's name")
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
@@ -144,7 +146,7 @@ def app():
                     - Amun of Primis<br>
                     - Duat-netjer<br>
                     - Hathor<br>
-                    - Hor-em-akh<br>et
+                    - Hor-em-akhet<br>
                     - Hor-nedj-itef<br>
                     - Hor-pa-hred<br>
                     - Horus<br>
@@ -179,4 +181,49 @@ def app():
                     - Thot<br>
                     - Uadjet<br>
 """)
-        st.html("""Select the deity you are interested in!""")
+
+        st.divider()
+        st.subheader("Write the deity's name")
+        st.html("""You can write one of the names from the list above.""")
+        deity_name = st.text_input("Deity's name")
+        st.write("You wrote:", deity_name)
+
+        st.write("")
+        st.write("DEITY")
+        df_divinita = pd.read_excel('DIVINITA.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df_divinita = df_divinita.loc[df_divinita['nome_personaggio'] == deity_name]
+        df_divinita = df_divinita.sort_values(by="codice_personaggio", ascending = True)
+        df_divinita = df_divinita.loc[:,~df_divinita.columns.str.startswith('codice')]
+        #df_scene = df.drop_duplicates
+        st_df_divinita = st.dataframe(df_divinita, hide_index=True)
+        print(st_df_divinita)
+
+        st.write("")
+        st.write("EPITHETS")
+        df_divinita_epiteti = pd.read_excel('DIVINITA_EPITETI.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df_divinita_epiteti = df_divinita_epiteti.loc[df_divinita_epiteti['nome_personaggio'] == deity_name]
+        df_divinita_epiteti = df_divinita_epiteti.sort_values(by="codice_personaggio", ascending = True)
+        df_divinita_epiteti = df_divinita_epiteti.loc[:,~df_divinita_epiteti.columns.str.startswith('codice')]
+        #df_scene = df.drop_duplicates
+        st_df_divinita_epiteti = st.dataframe(df_divinita_epiteti, hide_index=True)
+        print(st_df_divinita_epiteti)
+
+
+
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+    # use to_excel function and specify the sheet_name and index 
+    # to store the dataframe in specified sheet
+            df_divinita.to_excel(writer, sheet_name="Deity", index=False)
+            #df_bibl.to_excel(writer, sheet_name="Bibliography", index=False)
+            #df_char.to_excel(writer, sheet_name="Characters", index=False)
+        writer.close()
+
+        st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_deity.xlsx",
+                mime="text/Excel",)
