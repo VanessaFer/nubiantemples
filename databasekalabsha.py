@@ -27,9 +27,43 @@ def app():
     st.divider()
 
     st.subheader("Tabs")
-    tab1, tab2 = st.tabs(["Scene", "Deity"])
-        
+    tab1, tab2, tab3 = st.tabs(["Bibliography", "Scene", "Deity"])
+
     with tab1:
+         st.header("Bibliography")
+         st.html("""In this section you can make a research by selecting the book title and the page.
+                 The bibliography about the scenes of the temple of Kalabsha 
+                 is composed by two books, at the moment:""")
+         
+         col1, col2 = st.columns(2)
+         with col1:
+              st.subheader("Le temple de Kalabchah")
+              st.html("""'Le temple de Kalabchah' is a book wrote by Henri Gauthier published in 1911.
+                      <br>It is part of a larger serie named 'Les Temples immergés de la Nubie'.
+                      It is a quite complete study of the temple: the author describes the rooms and
+                      provides their measurements. He writes about the scenes, describing them with accuracy.
+                      <br>He mentions the colors too, and the later inscriptions in the court.
+                      <br>Here are a couple of links where you can find the PDF version of the book:
+                      <br><a href = http://www.archive.org/details/letempledekalabc01gaut>Le temple de Kalabchah pt.1</a>
+                      <br><a href = http://www.archive.org/details/letempledekalabc02gaut>Le temple de Kalabchah pt.2</a>
+                      <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Plates</a>
+                      <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Color plates</a>
+                      <br>Unfortunately, the quality of the plates is not high, but luckily you can make
+                      a research here and have a look at the plates with a better resolution.
+                      <br>
+                      <br>
+                      """)
+              st.subheader("Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt")
+              st.html("""'Topographical Bibliography' is a serie composed by seven volumes wrote by Bertha Porter 
+                      and Rosalind Louisa Beaufort Moss published in 1975. The serie is also known by the names of its authors: Porter Moss.
+                      <br>Here is the link where you can download the PDF version of the book from:
+                      <br><a href = http://www.griffith.ox.ac.uk/topbib/pdf/download.php?file=pm7.pdf>Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt</a>""")
+              
+              st.divider()
+
+
+
+    with tab2:
         st.header("Scene number")
         st.html("""The temple of Kalabsha has <b>139</b> offering scenes.
                 <br>As this project should become bigger by recording more offering scenes from other
@@ -96,15 +130,13 @@ def app():
                 data=buffer,
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
-    
+        
+        from IPython.core.display import display, HTML
         st.write("")
         st.write("PLATES")
-        st.html("""Would like to look at the plate from Gauthier's publication found in the Bibliography table?
-                <br>Digit its number below!""")
         plate = st.text_input("Plate number")
-        plate = "Tav. " + plate + ".jpg" ################################################################
         df_img = pd.read_csv("tavole.csv")
-        
+
         if (df_img["nome_tavola"] == plate).any():
                 left_co, cent_co,last_co = st.columns(3)
                 with cent_co:
@@ -121,6 +153,7 @@ def app():
                         </style>
                         """, unsafe_allow_html=True
                     )
+                    from PIL import Image, ImageOps
 
                     #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
                     #for i in tavole:
@@ -129,8 +162,8 @@ def app():
                     st.info(f'{plate}')
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
         
-    with tab2:
-        st.header("Deity's name")
+    with tab3:
+        #st.header("Deity's name")
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
@@ -146,7 +179,7 @@ def app():
                     - Amun of Primis<br>
                     - Duat-netjer<br>
                     - Hathor<br>
-                    - Hor-em-akhet<br>
+                    - Hor-em-akh<br>et
                     - Hor-nedj-itef<br>
                     - Hor-pa-hred<br>
                     - Horus<br>
@@ -181,49 +214,4 @@ def app():
                     - Thot<br>
                     - Uadjet<br>
 """)
-
-        st.divider()
-        st.subheader("Write the deity's name")
-        st.html("""You can write one of the names from the list above.""")
-        deity_name = st.text_input("Deity's name")
-        st.write("You wrote:", deity_name)
-
-        st.write("")
-        st.write("DEITY")
-        df_divinita = pd.read_excel('DIVINITA.xlsx')
-            # df = df.loc[:,~df.columns.duplicated()]
-        df_divinita = df_divinita.loc[df_divinita['nome_personaggio'] == deity_name]
-        df_divinita = df_divinita.sort_values(by="codice_personaggio", ascending = True)
-        df_divinita = df_divinita.loc[:,~df_divinita.columns.str.startswith('codice')]
-        #df_scene = df.drop_duplicates
-        st_df_divinita = st.dataframe(df_divinita, hide_index=True)
-        print(st_df_divinita)
-
-        st.write("")
-        st.write("EPITHETS")
-        df_divinita_epiteti = pd.read_excel('DIVINITA_EPITETI.xlsx')
-            # df = df.loc[:,~df.columns.duplicated()]
-        df_divinita_epiteti = df_divinita_epiteti.loc[df_divinita_epiteti['nome_personaggio'] == deity_name]
-        df_divinita_epiteti = df_divinita_epiteti.sort_values(by="codice_personaggio", ascending = True)
-        df_divinita_epiteti = df_divinita_epiteti.loc[:,~df_divinita_epiteti.columns.str.startswith('codice')]
-        #df_scene = df.drop_duplicates
-        st_df_divinita_epiteti = st.dataframe(df_divinita_epiteti, hide_index=True)
-        print(st_df_divinita_epiteti)
-
-
-
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
-   
-    # use to_excel function and specify the sheet_name and index 
-    # to store the dataframe in specified sheet
-            df_divinita.to_excel(writer, sheet_name="Deity", index=False)
-            #df_bibl.to_excel(writer, sheet_name="Bibliography", index=False)
-            #df_char.to_excel(writer, sheet_name="Characters", index=False)
-        writer.close()
-
-        st.download_button(
-                label="Download table as Excel file",
-                data=buffer,
-                file_name="kalabsha_deity.xlsx",
-                mime="text/Excel",)
+        st.html("""Select the deity you are interested in!""")
