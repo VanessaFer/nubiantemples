@@ -53,13 +53,69 @@ def app():
                       <br>
                       <br>
                       """)
+         with col2:
+              st.image("gauthier.jpg")
+              
+              
+         col3, col4 = st.columns(2)
+         with col3:
               st.subheader("Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt")
               st.html("""'Topographical Bibliography' is a serie composed by seven volumes wrote by Bertha Porter 
                       and Rosalind Louisa Beaufort Moss published in 1975. The serie is also known by the names of its authors: Porter Moss.
-                      <br>Here is the link where you can download the PDF version of the book from:
+                      <br>Here is the link where you can download the PDF version of the book:
                       <br><a href = http://www.griffith.ox.ac.uk/topbib/pdf/download.php?file=pm7.pdf>Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt</a>""")
-              
-              st.divider()
+         with col4:
+              st.image("porter_moss_vii.jpg")
+
+         st.divider()
+
+         biblio = st.radio(
+                "Select the book you mant to search in:",
+                ["Le Temple de Kalabchah", "Nubia, the deserts, and outside Egypt"]
+            )
+         biblio_page = st.text_input("Write the page number you need")
+         st.write("You wrote:", biblio_page)
+         df1 = pd.read_excel("SCENA_BIBLIOGRAFIA.xlsx")
+         df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
+         df_biblio = df1.loc[(df1["bookTitle"] == biblio) & (df1["page"] == biblio_page)]
+         #df_biblio = df_biblio.loc[(df_biblio["bookTitle"].isin([biblio])) & (df_biblio["page"].isin(["biblio_page"]))]
+         #df_biblio = df_biblio.loc[df_biblio["bookTitle"] == biblio]
+         #df_biblio["page"] == biblio_page
+         #df_biblio = pd.DataFrame(df_biblio)
+         st_df_biblio = st.dataframe(df_biblio.style.format(precision = 0, thousands=''), hide_index=True) #
+         print(st_df_biblio)
+     
+    st.write("")
+    st.write("PLATES")
+    plate = st.text_input("Plate number here")
+    df_img = pd.read_csv("tavole.csv")
+    plate = "Tav. " + plate + ".jpg"
+
+    if (df_img["nome_tavola"] == plate).any():
+                left_co, cent_co,last_co = st.columns(3)
+                with cent_co:
+                    st.markdown(
+                        """
+                        <style>
+                            button[title^=Exit]+div [data-testid=stImage]{
+                                text-align: center;
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 100%;
+                            }
+                        </style>
+                        """, unsafe_allow_html=True
+                    )
+                    from PIL import Image, ImageOps
+
+                    #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
+                    #for i in tavole:
+                        #img = ImageOps.exif_transpose(i)
+                    st.image(f'tavole_Gauthier/{plate}', width = 450)
+                    st.info(f'{plate}')
+                    #st.image(f'tavole_Gauthier/{plate}', width = 450)
+
 
 
 
@@ -136,6 +192,7 @@ def app():
         st.write("PLATES")
         plate = st.text_input("Plate number")
         df_img = pd.read_csv("tavole.csv")
+        plate = "Tav. " + plate + ".jpg"
 
         if (df_img["nome_tavola"] == plate).any():
                 left_co, cent_co,last_co = st.columns(3)
@@ -214,4 +271,98 @@ def app():
                     - Thot<br>
                     - Uadjet<br>
 """)
-        st.html("""Select the deity you are interested in!""")
+        st.divider()
+        st.subheader("Deities")
+        st.html("""Write the name of the deity you are interested in!""")
+        deity_name = st.text_input("Deity name")
+        st.write("You wrote:", deity_name)
+
+        st.write("")
+        st.write("DEITY")
+        df = pd.read_excel('DIVINITA.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df = df.loc[:,~df.columns.str.startswith('codice')]
+        df_deity = df.loc[df['deityName'] == deity_name]
+        #df_scene = df.drop_duplicates
+        st_df_deity = st.dataframe(df_deity, hide_index=True)
+        print(st_df_deity)
+
+        st.write("")
+        st.write("EPITHETS")
+        df = pd.read_excel('DIVINITA_EPITETI2.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df = df.loc[:,~df.columns.str.startswith('codice')]
+        df_epithets = df.loc[df['deityName'] == deity_name]
+        #df_scene = df.drop_duplicates
+        st_df_epithets = st.dataframe(df_epithets.style.format(precision = 0, thousands=''), hide_index=True)
+        print(st_df_epithets)
+
+        st.write("")
+        st.write("ACCESSORIES")
+        df = pd.read_excel('DIVINITA_ACCESSORIO.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df = df.loc[:,~df.columns.str.startswith('codice')]
+        df_accessory = df.loc[df['deityName'] == deity_name]
+        #df_scene = df.drop_duplicates
+        st_df_accessory = st.dataframe(df_accessory.style.format(precision = 0, thousands=''), hide_index=True)
+        print(st_df_accessory)
+
+        st.write("")
+        st.write("BIBLIOGRAPHY")
+        df1 = pd.read_excel('DIVINITA_BIBLIOGRAFIA.xlsx')
+            # df = df.loc[:,~df.columns.duplicated()]
+        df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
+        df_bibl_d = df1.loc[df1['deityName'] == deity_name]
+        #df_bibl["publicationYear"] = df_bibl["publicationYear"].astype(str)
+        #df_scene = df.drop_duplicates
+        st_df_bibl_d = st.dataframe(df_bibl_d.style.format(precision = 0, thousands=''), hide_index=True)
+        print(st_df_bibl_d)
+
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+    # use to_excel function and specify the sheet_name and index 
+    # to store the dataframe in specified sheet
+            df_deity.to_excel(writer, sheet_name="Deity", index=False)
+            df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
+            df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
+            df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
+        writer.close()
+
+        st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_deity.xlsx",
+                mime="text/Excel",)
+        
+        from IPython.core.display import display, HTML
+        st.write("")
+        st.write("PLATES")
+        plate = st.text_input("Write the plate number")
+        df_img = pd.read_csv("tavole.csv")
+        plate = "Tav. " + plate + ".jpg"
+
+        if (df_img["nome_tavola"] == plate).any():
+                left_co, cent_co,last_co = st.columns(3)
+                with cent_co:
+                    st.markdown(
+                        """
+                        <style>
+                            button[title^=Exit]+div [data-testid=stImage]{
+                                text-align: center;
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 100%;
+                            }
+                        </style>
+                        """, unsafe_allow_html=True
+                    )
+                    from PIL import Image, ImageOps
+
+                    #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
+                    #for i in tavole:
+                        #img = ImageOps.exif_transpose(i)
+                    st.image(f'tavole_Gauthier/{plate}', width = 450)
+                    st.info(f'{plate}')
+                    #st.image(f'tavole_Gauthier/{plate}', width = 450)
