@@ -77,7 +77,7 @@ def app():
          st.write("You wrote:", biblio_page)
          df1 = pd.read_excel("SCENA_BIBLIOGRAFIA.xlsx")
          df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
-         df_biblio = df1[(df1["bookTitle"] == biblio) and (df1["page"] == biblio_page)].any()
+         df_biblio = df1.any([(df1["bookTitle"] == biblio) and (df1["page"] == biblio_page)])
          #df_biblio = df_biblio.loc[(df_biblio["bookTitle"].isin([biblio])) & (df_biblio["page"].isin(["biblio_page"]))]
          #df_biblio = df_biblio.loc[df_biblio["bookTitle"] == biblio]
          #df_biblio["page"] == biblio_page
