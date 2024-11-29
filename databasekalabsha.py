@@ -27,7 +27,7 @@ def app():
     st.divider()
 
     st.subheader("Tabs")
-    tab1, tab2, tab3 = st.tabs(["Bibliography", "Scene", "Deity"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Bibliography", "Scene", "Deity", "Bibliography of the temple"])
 
     with tab1:
          st.header("Bibliography")
@@ -77,6 +77,7 @@ def app():
          st.write("You wrote:", biblio_page)
          df1 = pd.read_excel("SCENA_BIBLIOGRAFIA.xlsx")
          df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
+         df1["page"] = df1["page"].astype(str)
          df_biblio = df1.loc[(df1["bookTitle"] == biblio) & (df1["page"] == biblio_page)]
          #df_biblio = df_biblio.loc[(df_biblio["bookTitle"].isin([biblio])) & (df_biblio["page"].isin(["biblio_page"]))]
          #df_biblio = df_biblio.loc[df_biblio["bookTitle"] == biblio]
@@ -220,7 +221,7 @@ def app():
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
         
     with tab3:
-        #st.header("Deity's name")
+        st.header("Deity's name")
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
@@ -366,3 +367,13 @@ def app():
                     st.image(f'tavole_Gauthier/{plate}', width = 450)
                     st.info(f'{plate}')
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
+
+        with tab4:
+             st.header("Bibliography of the temple")
+             st.html("""Here you can find the bibliography of the temple of Kalabsha that
+                     I used for my MA thesis.<br>
+                     It is highly possible that it is not complete, therefore it would be great if you have
+                     any suggestion in order to enrich it.
+                     <br>I think that it's a good starting point, though.
+                     <br>""")
+        
