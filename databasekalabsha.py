@@ -26,8 +26,8 @@ def app():
     
     st.divider()
 
-    st.subheader("Tabs")
-    tab1, tab2, tab3, tab4 = st.tabs(["Bibliography", "Scene", "Deity", "Bibliography of the temple"])
+    st.subheader("Research area")
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Bibliography", "Scene", "Deity", "King", "Bibliography of the temple"])
 
     with tab1:
          st.header("Bibliography")
@@ -54,7 +54,7 @@ def app():
                       <br>
                       """)
          with col2:
-              st.image("gauthier.jpg")
+              st.image("gauthier.jpg", width = 400)
               
               
          col3, col4 = st.columns(2)
@@ -65,7 +65,7 @@ def app():
                       <br>Here is the link where you can download the PDF version of the book:
                       <br><a href = http://www.griffith.ox.ac.uk/topbib/pdf/download.php?file=pm7.pdf>Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt</a>""")
          with col4:
-              st.image("porter_moss_vii.jpg")
+              st.image("porter_moss_vii.jpg", width = 400)
 
          st.divider()
 
@@ -85,37 +85,40 @@ def app():
          #df_biblio = pd.DataFrame(df_biblio)
          st_df_biblio = st.dataframe(df_biblio.style.format(precision = 0, thousands=''), hide_index=True) #
          print(st_df_biblio)
+
+         st.write("You can search the name of the plate below, but you can make a deeper research in the 'Scene' tab using the scene acronym.")
      
-    st.write("")
-    st.write("PLATES")
-    plate = st.text_input("Plate number here")
-    df_img = pd.read_csv("tavole.csv")
-    plate = "Tav. " + plate + ".jpg"
+         st.write("")
+         st.write("PLATES")
+         plate = st.text_input("Plate number here")
+         df_img = pd.read_csv("tavole.csv")
+         plate = "Tav. " + plate + ".jpg"
 
-    if (df_img["nome_tavola"] == plate).any():
-                left_co, cent_co,last_co = st.columns(3)
-                with cent_co:
-                    st.markdown(
-                        """
-                        <style>
-                            button[title^=Exit]+div [data-testid=stImage]{
-                                text-align: center;
-                                display: block;
-                                margin-left: auto;
-                                margin-right: auto;
-                                width: 100%;
-                            }
-                        </style>
-                        """, unsafe_allow_html=True
-                    )
-                    from PIL import Image, ImageOps
 
-                    #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
-                    #for i in tavole:
-                        #img = ImageOps.exif_transpose(i)
-                    st.image(f'tavole_Gauthier/{plate}', width = 450)
-                    st.info(f'{plate}')
-                    #st.image(f'tavole_Gauthier/{plate}', width = 450)
+         if (df_img["nome_tavola"] == plate).any():
+                    left_co, cent_co,last_co = st.columns(3)
+                    with cent_co:
+                        st.markdown(
+                            """
+                            <style>
+                                button[title^=Exit]+div [data-testid=stImage]{
+                                    text-align: center;
+                                    display: block;
+                                    margin-left: auto;
+                                    margin-right: auto;
+                                    width: 100%;
+                                }
+                            </style>
+                            """, unsafe_allow_html=True
+                        )
+                        from PIL import Image, ImageOps
+
+                        #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
+                        #for i in tavole:
+                            #img = ImageOps.exif_transpose(i)
+                        st.image(f'tavole_Gauthier/{plate}', width = 600)
+                        st.info(f'{plate}')
+                        #st.image(f'tavole_Gauthier/{plate}', width = 450)
 
 
 
@@ -237,7 +240,7 @@ def app():
                     - Amun of Primis<br>
                     - Duat-netjer<br>
                     - Hathor<br>
-                    - Hor-em-akh<br>et
+                    - Hor-em-akhet<br>
                     - Hor-nedj-itef<br>
                     - Hor-pa-hred<br>
                     - Horus<br>
@@ -278,22 +281,32 @@ def app():
         deity_name = st.text_input("Deity name")
         st.write("You wrote:", deity_name)
 
+        st.write("Would you like to narrow down your search using the scene acronym? Write it here!")
+        scene_acronym = st.text_input("Scene acronym")
+        st.write("You wrote:", scene_acronym)
+#########################################################################################################################
         st.write("")
         st.write("DEITY")
         df = pd.read_excel('DIVINITA.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
-        df_deity = df.loc[df['deityName'] == deity_name]
-        #df_scene = df.drop_duplicates
-        st_df_deity = st.dataframe(df_deity, hide_index=True)
-        print(st_df_deity)
+        #if df == df.loc[df['deityName'] == deity_name] and df == df.loc[df['sceneAcronym'] == scene_acronym]:
+            #df_scene = df.drop_duplicates
+        if scene_acronym is None:
+             df_deity = df.loc[(df["deityName"] == deity_name)]
+             st_df_deity = st.dataframe(df_deity, hide_index=True)
+             print(st_df_deity)
+        # elif deity_name == deity_name and scene_acronym == scene_acronym:
+        #      df_deity = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
+        #      st_df_deity = st.dataframe(df_deity, hide_index=True)
+        #      print(st_df_deity)
 
         st.write("")
         st.write("EPITHETS")
         df = pd.read_excel('DIVINITA_EPITETI2.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
-        df_epithets = df.loc[df['deityName'] == deity_name]
+        df_epithets = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
         #df_scene = df.drop_duplicates
         st_df_epithets = st.dataframe(df_epithets.style.format(precision = 0, thousands=''), hide_index=True)
         print(st_df_epithets)
@@ -303,7 +316,7 @@ def app():
         df = pd.read_excel('DIVINITA_ACCESSORIO.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
-        df_accessory = df.loc[df['deityName'] == deity_name]
+        df_accessory = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
         #df_scene = df.drop_duplicates
         st_df_accessory = st.dataframe(df_accessory.style.format(precision = 0, thousands=''), hide_index=True)
         print(st_df_accessory)
@@ -313,7 +326,7 @@ def app():
         df1 = pd.read_excel('DIVINITA_BIBLIOGRAFIA.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
         df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
-        df_bibl_d = df1.loc[df1['deityName'] == deity_name]
+        df_bibl_d = df1.loc[(df1["deityName"] == deity_name) & (df1["sceneAcronym"] == scene_acronym)]
         #df_bibl["publicationYear"] = df_bibl["publicationYear"].astype(str)
         #df_scene = df.drop_duplicates
         st_df_bibl_d = st.dataframe(df_bibl_d.style.format(precision = 0, thousands=''), hide_index=True)
@@ -369,6 +382,43 @@ def app():
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
 
         with tab4:
+            st.header("Kings")
+            st.html("""Here you can find some information baout the kings depicted in the temple of Kalabsha.
+            <br>These kings belong to the Roman Period, because the last version of the temple was built in that period
+            under the reign of Augustus; nevertheless there are a couple of scenes that shows Amenhotep II and a Ptolemaic king.<br>
+            The kings depicted are:<br>
+            - Augustus<br>
+            - Trajan<br>
+            - Antoninus Pius<br>
+            - Amenhotep II<br>
+            - Ptolemy<br>
+            """)
+
+            st.divider()
+            st.subheader("Search by the king name")
+            st.html("""Write the name of the king you are interested in!""")
+            king_name = st.text_input("King name")
+            st.write("You wrote:", king_name)
+
+            st.write("")
+            st.write("KING")
+            df = pd.read_excel('DIVINITA.xlsx')
+                # df = df.loc[:,~df.columns.duplicated()]
+            df = df.loc[:,~df.columns.str.startswith('codice')]
+            df_king = df.loc[df['deityName'] == king_name]
+            #df_scene = df.drop_duplicates
+            st_df_king = st.dataframe(df_king, hide_index=True)
+            print(st_df_king)
+
+            st.html("""If you want to look for a specific scene or room in order to
+            circumscribe your research, you can use the boxes below.""")
+
+
+
+
+
+
+        with tab5:
              st.header("Bibliography of the temple")
              st.html("""Here you can find the bibliography of the temple of Kalabsha that
                      I used for my MA thesis.<br>
