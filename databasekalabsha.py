@@ -137,7 +137,7 @@ def app():
                 <br><br>
                 Once you have wrote the scene code, you can both have a look at the output and download the
                 Excel file containing the data splitted into three sheets.
-""")
+                """)
         st.divider()
         st.subheader("Select the scene")
         st.html("""You can write a scene code between KB1 and KB139.""")
@@ -178,8 +178,8 @@ def app():
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
    
-    # use to_excel function and specify the sheet_name and index 
-    # to store the dataframe in specified sheet
+        # use to_excel function and specify the sheet_name and index 
+        # to store the dataframe in specified sheet
             df_scene.to_excel(writer, sheet_name="Scene", index=False)
             df_bibl.to_excel(writer, sheet_name="Bibliography", index=False)
             df_char.to_excel(writer, sheet_name="Characters", index=False)
@@ -228,7 +228,7 @@ def app():
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
-""")
+                """)
         col1, col2 = st.columns(2)
         with col1:
             st.html("""
@@ -252,7 +252,7 @@ def app():
                     - Khnum<br>
                     - Khonsu?<br>
                     - Merur<br>
-""")
+                 """)
         with col2:
             st.html("""
                     - Merur the young<br>
@@ -274,7 +274,7 @@ def app():
                     - Tetun<br>
                     - Thot<br>
                     - Uadjet<br>
-""")
+         """)
         st.divider()
         st.subheader("Deities")
         st.html("""Write the name of the deity you are interested in!""")
@@ -296,10 +296,10 @@ def app():
              df_deity = df.loc[(df["deityName"] == deity_name)]
              st_df_deity = st.dataframe(df_deity, hide_index=True)
              print(st_df_deity)
-        # elif deity_name == deity_name and scene_acronym == scene_acronym:
-        #      df_deity = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
-        #      st_df_deity = st.dataframe(df_deity, hide_index=True)
-        #      print(st_df_deity)
+        elif deity_name == deity_name and scene_acronym == scene_acronym:
+             df_deity = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
+             st_df_deity = st.dataframe(df_deity, hide_index=True)
+             print(st_df_deity)
 
         st.write("")
         st.write("EPITHETS")
@@ -335,8 +335,8 @@ def app():
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
    
-    # use to_excel function and specify the sheet_name and index 
-    # to store the dataframe in specified sheet
+            # use to_excel function and specify the sheet_name and index 
+            # to store the dataframe in specified sheet
             df_deity.to_excel(writer, sheet_name="Deity", index=False)
             df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
             df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
@@ -381,9 +381,9 @@ def app():
                     st.info(f'{plate}')
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
 
-        with tab4:
-            st.header("Kings")
-            st.html("""Here you can find some information baout the kings depicted in the temple of Kalabsha.
+    with tab4:
+        st.header("Kings")
+        st.html("""Here you can find some information baout the kings depicted in the temple of Kalabsha.
             <br>These kings belong to the Roman Period, because the last version of the temple was built in that period
             under the reign of Augustus; nevertheless there are a couple of scenes that shows Amenhotep II and a Ptolemaic king.<br>
             The kings depicted are:<br>
@@ -394,23 +394,23 @@ def app():
             - Ptolemy<br>
             """)
 
-            st.divider()
-            st.subheader("Search by the king name")
-            st.html("""Write the name of the king you are interested in!""")
-            king_name = st.text_input("King name")
-            st.write("You wrote:", king_name)
+        st.divider()
+        st.subheader("Search by the king name")
+        st.html("""Write the name of the king you are interested in!""")
+        king_name = st.text_input("King name")
+        st.write("You wrote:", king_name)
 
-            st.write("")
-            st.write("KING")
-            df = pd.read_excel('DIVINITA.xlsx')
+        st.write("")
+        st.write("KING")
+        df = pd.read_excel('DIVINITA.xlsx')
                 # df = df.loc[:,~df.columns.duplicated()]
-            df = df.loc[:,~df.columns.str.startswith('codice')]
-            df_king = df.loc[df['deityName'] == king_name]
+        df = df.loc[:,~df.columns.str.startswith('codice')]
+        df_king = df.loc[df['deityName'] == king_name]
             #df_scene = df.drop_duplicates
-            st_df_king = st.dataframe(df_king, hide_index=True)
-            print(st_df_king)
+        st_df_king = st.dataframe(df_king, hide_index=True)
+        print(st_df_king)
 
-            st.html("""If you want to look for a specific scene or room in order to
+        st.html("""If you want to look for a specific scene or room in order to
             circumscribe your research, you can use the boxes below.""")
 
 
@@ -418,9 +418,9 @@ def app():
 
 
 
-        with tab5:
-             st.header("Bibliography of the temple")
-             st.html("""Here you can find the bibliography of the temple of Kalabsha that
+    with tab5:
+        st.header("Bibliography of the temple")
+        st.html("""Here you can find the bibliography of the temple of Kalabsha that
                      I used for my MA thesis.<br>
                      It is highly possible that it is not complete, therefore it would be great if you have
                      any suggestion in order to enrich it.
