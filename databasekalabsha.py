@@ -224,7 +224,7 @@ def app():
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
         
     with tab3:
-        st.header("Deity's name")
+        st.header("Name of the deities")
         st.html("""In this tab you can do your research by the name of the deity.
                 <br>Here is a list of the deities depicted in the offering scenes
                 of the temple of Kalabsha:
