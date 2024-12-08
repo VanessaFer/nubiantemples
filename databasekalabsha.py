@@ -499,7 +499,7 @@ def app():
         df = pd.read_excel("BIBLIOGRAFIA_TEMPIO.xlsx")
         df_biblio_temple = df.loc[df['temple'] == biblio_temple]
             #df_scene = df.drop_duplicates
-        st_df_biblio_temple = st.dataframe(df_biblio_temple, hide_index=True)
+        st_df_biblio_temple = st.dataframe(df_biblio_temple.style.format(precision = 0, thousands=''), hide_index=True)
         print(st_df_biblio_temple)
 
         buffer = io.BytesIO()
@@ -514,5 +514,3 @@ def app():
                 data=buffer,
                 file_name="kalabsha_biblio.xlsx",
                 mime="text/Excel",)
-        
-        
