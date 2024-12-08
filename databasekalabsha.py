@@ -139,7 +139,7 @@ def app():
                 Excel file containing the data splitted into three sheets.
                 """)
         st.divider()
-        st.subheader("Select the scene")
+        st.subheader("Writhe the code of the scene")
         st.html("""You can write a scene code between KB1 and KB139.""")
         codice_scena = st.text_input("Scene code")
         st.write("You wrote:", codice_scena)
