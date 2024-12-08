@@ -27,7 +27,7 @@ def app():
     st.divider()
 
     st.subheader("Research area")
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["Bibliography", "Scene", "Deity", "King", "Bibliography of the temple"])
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Bibliography", "Scene", "Deity", "King", "Temple area", "Bibliography of the temple"])
 
     with tab1:
          st.header("Bibliography")
@@ -281,7 +281,7 @@ def app():
         deity_name = st.text_input("Deity name")
         st.write("You wrote:", deity_name)
 
-        st.write("Would you like to narrow down your search using the scene acronym? Write it here!")
+        st.write("Do you need to narrow down your search using the scene acronym? Write it here!")
         scene_acronym = st.text_input("Scene acronym")
         st.write("You wrote:", scene_acronym)
 #########################################################################################################################
@@ -289,17 +289,17 @@ def app():
         st.write("DEITY")
         df = pd.read_excel('DIVINITA.xlsx')
             # df = df.loc[:,~df.columns.duplicated()]
-        df = df.loc[:,~df.columns.str.startswith('codice')]
+        df_deity = df.loc[:,~df.columns.str.startswith('codice')]
         #if df == df.loc[df['deityName'] == deity_name] and df == df.loc[df['sceneAcronym'] == scene_acronym]:
             #df_scene = df.drop_duplicates
-        if scene_acronym is None:
-             df_deity = df.loc[(df["deityName"] == deity_name)]
-             st_df_deity = st.dataframe(df_deity, hide_index=True)
+        if deity_name:
+             df_deity1 = df_deity.loc[(df_deity["deityName"] == deity_name)]
+             st_df_deity = st.dataframe(df_deity1, hide_index=True)
              print(st_df_deity)
-        elif deity_name == deity_name and scene_acronym == scene_acronym:
-             df_deity = df.loc[(df["deityName"] == deity_name) & (df["sceneAcronym"] == scene_acronym)]
-             st_df_deity = st.dataframe(df_deity, hide_index=True)
-             print(st_df_deity)
+        elif deity_name and scene_acronym:
+             df_deity2 = df_deity.loc[(df_deity["deityName"] == deity_name) & (df_deity["sceneAcronym"] == scene_acronym)]
+             st_df_deity1 = st.dataframe(df_deity2, hide_index=True)
+             print(st_df_deity1)
 
         st.write("")
         st.write("EPITHETS")
@@ -402,28 +402,117 @@ def app():
 
         st.write("")
         st.write("KING")
-        df = pd.read_excel('DIVINITA.xlsx')
+        df = pd.read_excel('KING.xlsx')
                 # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
-        df_king = df.loc[df['deityName'] == king_name]
+        df_king = df.loc[df['name'] == king_name]
             #df_scene = df.drop_duplicates
         st_df_king = st.dataframe(df_king, hide_index=True)
         print(st_df_king)
 
-        st.html("""If you want to look for a specific scene or room in order to
-            circumscribe your research, you can use the boxes below.""")
-
-
-
+        # st.html("""If you want to look for a specific scene or room in order to
+        #     circumscribe your research, you can use the boxes below.""")
 
 
 
     with tab5:
+         st.header("Temple area")
+         st.html("""Here you can make your research by the area of the temple.<br>
+                 The temple of Kalabsha has several rooms and areas: <br>
+                 - Sanctuary (<i>Cella</i> of Gauthier) <br>
+                 - Inner Vestibule (<i>Procella</i> of Gauthier)<br>
+                 - Outer Vestibule (<i>Antechamber</i> of Gauthier)<br>
+                 - Hypostyle (<i>Pronaos</i> of Gauthier)<br>
+                 - Forecourt<br>
+                 - Pylon<br><br>
+                 Below you can have a look at the temple diagram.
+                 """)
+         left_co, cent_co,last_co = st.columns(3)
+         with cent_co:
+                    st.markdown(
+                        """
+                        <style>
+                            button[title^=Exit]+div [data-testid=stImage]{
+                                text-align: center;
+                                display: block;
+                                margin-left: auto;
+                                margin-right: auto;
+                                width: 600;
+                            }
+                        </style>
+                        """, unsafe_allow_html=True
+                    )
+                    st.image("kalabsha_diagram.png")
+                    st.info("Diagram of the Temple of Kalabsha from PM VII (p. 12)")
+
+         st.divider()
+         st.html("""You can choose one of the rooms and areas of the temple from the box below.""")
+         room = st.selectbox("Select the room or the area", 
+                       ["Cella", "Inner Vestibule", "Outer Vestibule", "Hypostyle", "Forecourt", "Pylon"])
+         st.write("You choose: ", room)
+         st.write("")
+         st.write("ROOM")
+         df = pd.read_excel('STANZA.xlsx')
+                # df = df.loc[:,~df.columns.duplicated()]
+         df = df.loc[:,~df.columns.str.startswith('codice')]
+         dict_room_name = {"cella": "Cella", "procella": "Inner Vestibule",
+                           "antechamber": "Outer Vestibule", "pronaos": "Hypostyle",
+                           "court": "Forecourt", "pylon": "Pylon"}
+         df["room"] = df["room"].map(dict_room_name)
+         df_room = df.loc[df['room'] == room]
+            #df_scene = df.drop_duplicates
+         st_df_room = st.dataframe(df_room, hide_index=True)
+         print(st_df_room)
+
+         buffer = io.BytesIO()
+         with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+            # use to_excel function and specify the sheet_name and index 
+            # to store the dataframe in specified sheet
+            df_room.to_excel(writer, sheet_name="Deity", index=False)
+            # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
+            # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
+            # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
+         writer.close()
+
+         st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_room.xlsx",
+                mime="text/Excel",)
+
+
+    with tab6:
         st.header("Bibliography of the temple")
         st.html("""Here you can find the bibliography of the temple of Kalabsha that
                      I used for my MA thesis.<br>
                      It is highly possible that it is not complete, therefore it would be great if you have
                      any suggestion in order to enrich it.
-                     <br>I think that it's a good starting point, though.
+                     <br>This could be a good starting point, though.
                      <br>""")
+        
+        biblio_temple = st.selectbox("Select the temple", 
+                       ["Kalabsha"])
+        st.write("You choose: ", biblio_temple)
+        st.write("")
+        st.write("BIBLIOGRAPHY OF THE TEMPLE")
+        df = pd.read_excel("BIBLIOGRAFIA_TEMPIO.xlsx")
+        df_biblio_temple = df.loc[df['temple'] == biblio_temple]
+            #df_scene = df.drop_duplicates
+        st_df_biblio_temple = st.dataframe(df_biblio_temple, hide_index=True)
+        print(st_df_biblio_temple)
+
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+            # use to_excel function and specify the sheet_name and index 
+            # to store the dataframe in specified sheet
+          df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
+        writer.close()
+        st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_biblio.xlsx",
+                mime="text/Excel",)
+        
         
