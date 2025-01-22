@@ -165,7 +165,15 @@ def app():
         
     folium.LayerControl(collapsed=False).add_to(m)
 
-    st.title("Map of the submerged Nubian temples")
+    st.header("Map of the submerged Nubian temples")
+    st.divider()
+
+    st.write("""
+The map displays the **original location** of the Nubian temples that were relocated after the 
+construction of the Second Aswan Dam.
+             
+See below the map for few notes.
+""")
 
     #Aggiungere istruzioni di navigazione della mappa
     folium_static(m, width=800, height=450)
@@ -174,3 +182,27 @@ def app():
     #     html_data = f.read()
 
     # st.components.v1.html(html_data,height=400)
+    st.subheader("Full screen and Legend")
+    st.write("""
+On the top right of the map, you can find an icon that allows you to see the map in full screen.
+Beneath it, there is a legend that shows you the period of construction of the temples.
+If you would like to see the temples of a specific period, you can uncheck the boxes next to 
+the name of the period you are interested in.    
+""")
+
+    st.subheader("Clusters and Pop-ups")
+    st.write("""
+As you can see, on the map there are some green circles with a number inside of them: these are the
+clustered icons of the temples. The number of clusters will increase as you zoom in, until you
+can see the icon of the temple. The colors are not casual:
+- Red = New Kingdom
+- Green = Ptolemaic Kingdom
+- Light blue = Roman Period
+
+If you hover your mouse over the icons, a tooltip will show you the name of the temples.
+             
+A pop-up appears by clicking the icon. Inside the pop-up you can find some information about the 
+temple, such as its name, the period(s) of its construction and the pharaoh(s) that worked on it.
+             
+:blue-background[The pop-ups will be eriched with more contents!]
+""")
