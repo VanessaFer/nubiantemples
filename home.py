@@ -43,11 +43,6 @@ def app():
     with col2:
         st.image("Kalabsha.jpg", caption = "The Temple of Kalabsha from the Nile River", width = 400)
     
-    app_path = 'http://localhost:8501'
-    page = "kalabsha"
-    st.markdown(f'''<a href="{app_path}/{page}" target="_self">Temple of Kalabsha</a>''',
-    unsafe_allow_html=True)
-    
     st.divider()  
 
     st.header("A small guide to the website")
