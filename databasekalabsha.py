@@ -381,53 +381,53 @@ def app():
                     st.info(f'{plate}')
                     #st.image(f'tavole_Gauthier/{plate}', width = 450)
 
-    with tab4:
-        st.header("Kings")
-        st.html("""Here you can find some information baout the kings depicted in the temple of Kalabsha.
-            <br>These kings belong to the Roman Period, because the last version of the temple was built in that period
-            under the reign of Augustus; nevertheless there are a couple of scenes that shows Amenhotep II and a Ptolemaic king.<br>
-            The kings depicted are:<br>
-            - Augustus<br>
-            - Trajan<br>
-            - Antoninus Pius<br>
-            - Amenhotep II<br>
-            - Ptolemy<br>
-            """)
+    # with tab4:
+    #     st.header("Kings")
+    #     st.html("""Here you can find some information baout the kings depicted in the temple of Kalabsha.
+    #         <br>These kings belong to the Roman Period, because the last version of the temple was built in that period
+    #         under the reign of Augustus; nevertheless there are a couple of scenes that shows Amenhotep II and a Ptolemaic king.<br>
+    #         The kings depicted are:<br>
+    #         - Augustus<br>
+    #         - Trajan<br>
+    #         - Antoninus Pius<br>
+    #         - Amenhotep II<br>
+    #         - Ptolemy<br>
+    #         """)
 
-        st.divider()
-        st.subheader("Search by the king name")
-        st.html("""Write the name of the king you are interested in!""")
-        king_name = st.text_input("King name")
-        st.write("You wrote:", king_name)
+    #     st.divider()
+    #     st.subheader("Search by the king name")
+    #     st.html("""Write the name of the king you are interested in!""")
+    #     king_name = st.text_input("King name")
+    #     st.write("You wrote:", king_name)
 
-        st.write("")
-        st.write("KING")
-        df = pd.read_excel('KING.xlsx')
-                # df = df.loc[:,~df.columns.duplicated()]
-        df = df.loc[:,~df.columns.str.startswith('codice')]
-        df_king = df.loc[df['name'] == king_name]
-            #df_scene = df.drop_duplicates
-        st_df_king = st.dataframe(df_king, hide_index=True)
-        print(st_df_king)
+    #     st.write("")
+    #     st.write("KING")
+    #     df = pd.read_excel('KING.xlsx')
+    #             # df = df.loc[:,~df.columns.duplicated()]
+    #     df = df.loc[:,~df.columns.str.startswith('codice')]
+    #     df_king = df.loc[df['name'] == king_name]
+    #         #df_scene = df.drop_duplicates
+    #     st_df_king = st.dataframe(df_king, hide_index=True)
+    #     print(st_df_king)
 
-        # st.html("""If you want to look for a specific scene or room in order to
-        #     circumscribe your research, you can use the boxes below.""")
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+    #     # st.html("""If you want to look for a specific scene or room in order to
+    #     #     circumscribe your research, you can use the boxes below.""")
+    #     buffer = io.BytesIO()
+    #     with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
    
-            # use to_excel function and specify the sheet_name and index 
-            # to store the dataframe in specified sheet
-            st_df_king.to_excel(writer, sheet_name="King", index=False)
-            # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
-            # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
-            # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
-        writer.close()
+    #         # use to_excel function and specify the sheet_name and index 
+    #         # to store the dataframe in specified sheet
+    #         st_df_king.to_excel(writer, sheet_name="King", index=False)
+    #         # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
+    #         # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
+    #         # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
+    #     writer.close()
 
-        st.download_button(
-                label="Download table as Excel file",
-                data=buffer,
-                file_name="kalabsha_king.xlsx",
-                mime="text/Excel",)
+    #     st.download_button(
+    #             label="Download table as Excel file",
+    #             data=buffer,
+    #             file_name="kalabsha_king.xlsx",
+    #             mime="text/Excel",)
 
 
 
