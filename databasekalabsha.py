@@ -412,6 +412,22 @@ def app():
 
         # st.html("""If you want to look for a specific scene or room in order to
         #     circumscribe your research, you can use the boxes below.""")
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
+   
+            # use to_excel function and specify the sheet_name and index 
+            # to store the dataframe in specified sheet
+            df_room.to_excel(writer, sheet_name="King", index=False)
+            # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
+            # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
+            # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
+        writer.close()
+
+        st.download_button(
+                label="Download table as Excel file",
+                data=buffer,
+                file_name="kalabsha_king.xlsx",
+                mime="text/Excel",)
 
 
 
@@ -469,7 +485,7 @@ def app():
    
             # use to_excel function and specify the sheet_name and index 
             # to store the dataframe in specified sheet
-            df_room.to_excel(writer, sheet_name="Deity", index=False)
+            df_room.to_excel(writer, sheet_name="Area", index=False)
             # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
             # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
             # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
