@@ -417,7 +417,7 @@ def app():
    
             # use to_excel function and specify the sheet_name and index 
             # to store the dataframe in specified sheet
-            df_room.to_excel(writer, sheet_name="King", index=False)
+            st_df_king.to_excel(writer, sheet_name="King", index=False)
             # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
             # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
             # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
@@ -485,7 +485,7 @@ def app():
    
             # use to_excel function and specify the sheet_name and index 
             # to store the dataframe in specified sheet
-            df_room.to_excel(writer, sheet_name="Area", index=False)
+            st_df_room.to_excel(writer, sheet_name="Area", index=False)
             # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
             # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
             # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
@@ -523,7 +523,7 @@ def app():
    
             # use to_excel function and specify the sheet_name and index 
             # to store the dataframe in specified sheet
-          df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
+          st_df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
         writer.close()
         st.download_button(
                 label="Download table as Excel file",
