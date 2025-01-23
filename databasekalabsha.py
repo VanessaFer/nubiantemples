@@ -27,7 +27,7 @@ def app():
     st.divider()
 
     st.subheader("Research area")
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Bibliography", "Scene", "Deity", "King", "Temple area", "Bibliography of the temple"])
+    tab1, tab2, tab3, tab5, tab6 = st.tabs(["Bibliography", "Scene", "Deity", "Temple area", "Bibliography of the temple"])
 
     with tab1:
          st.header("Bibliography")
@@ -70,7 +70,7 @@ def app():
          st.divider()
 
          biblio = st.radio(
-                "Select the book you mant to search in:",
+                "Select the book you want to search in:",
                 ["Le Temple de Kalabchah", "Nubia, the deserts, and outside Egypt"]
             )
          biblio_page = st.text_input("Write the page number you need")
@@ -482,13 +482,8 @@ def app():
 
          buffer = io.BytesIO()
          with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
-   
-            # use to_excel function and specify the sheet_name and index 
-            # to store the dataframe in specified sheet
-            st_df_room.to_excel(writer, sheet_name="Area", index=False)
-            # df_epithets.to_excel(writer, sheet_name="Epithets", index=False)
-            # df_accessory.to_excel(writer, sheet_name="Accessory", index=False)
-            # df_bibl_d.to_excel(writer, sheet_name="Bibliography", index=False)
+              df_room.to_excel(writer, sheet_name="Area", index=False)
+              df_room.to_excel(writer, sheet_name="Area", index=False)
          writer.close()
 
          st.download_button(
@@ -523,7 +518,7 @@ def app():
    
             # use to_excel function and specify the sheet_name and index 
             # to store the dataframe in specified sheet
-          st_df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
+          df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
         writer.close()
         st.download_button(
                 label="Download table as Excel file",
