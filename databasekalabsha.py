@@ -5,6 +5,7 @@ import pandas as pd
 # import sqlite3
 # from sqlite3 import connect
 import io
+from PIL import Image, ImageOps
 #pip install mysql-connector-python
 
 def app():
@@ -191,7 +192,8 @@ def app():
                 file_name="kalabsha_scene.xlsx",
                 mime="text/Excel",)
         
-        from IPython.core.display import display, HTML
+        #from IPython.core.display import display, HTML
+        
         st.write("")
         st.write("PLATES")
         plate = st.text_input("Plate number")
@@ -214,8 +216,6 @@ def app():
                         </style>
                         """, unsafe_allow_html=True
                     )
-                    from PIL import Image, ImageOps
-
                     #tavole = r"C:\Users\vanes\OneDrive\Desktop\mappa_templi_nubiani\tavole_Gauthier"
                     #for i in tavole:
                         #img = ImageOps.exif_transpose(i)
