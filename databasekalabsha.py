@@ -349,7 +349,7 @@ def app():
                 file_name="kalabsha_deity.xlsx",
                 mime="text/Excel",)
         
-        #from IPython.core.display import display, HTML
+       
         st.write("")
         st.write("PLATES")
         plate = st.text_input("Write the plate number")
