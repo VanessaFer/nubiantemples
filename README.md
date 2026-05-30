@@ -1,5 +1,5 @@
 # The Submerged Temples of Nubia – Interactive Web App
-🔗 **Live app**: [Click here to visit the webapp]([https://example.com](https://nubiantemplesproject.streamlit.app/)
+🔗 **Live app**: [Click here to visit the webapp](https://nubiantemplesproject.streamlit.app/)
 
 ## Project Overview
 A personal research project and interactive web application dedicated to the 
