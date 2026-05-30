@@ -68,7 +68,8 @@ drill-down interaction by clicking on the charts.
 
 ## Status
 🚧 Work in progress — currently the database contains data from the 
-Temple of Kalabsha. Further temples will be added in future updates.
+Temple of Kalabsha. 
+Further temples will be added in future updates.
 
 ## Contacts
 nubiantemples.project@gmail.com
