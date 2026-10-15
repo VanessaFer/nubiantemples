@@ -6,7 +6,7 @@ folium
 numpy
 streamlit_folium
 joblib
-scikit-learn
+scikit-learn==1.5.2
 openpyxl
 xlsxwriter
 IPython
