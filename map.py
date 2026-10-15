@@ -9,10 +9,23 @@ from folium.plugins import MarkerCluster
 #import branca.colormap as cm
 from streamlit_folium import folium_static
 
+CARTO_KEY = "cb1_4lte_1_20137605a7d2ac53b1c34603"
+
 def app():
+
     df = pd.read_csv("templi_nubiani.csv")
-    m = folium.Map(location = [22.809872815747962, 32.562480661588175], zoom_start=7, tiles = None)
-    t = folium.TileLayer(tiles="Cartodb Positron", control=False).add_to(m)
+
+    m = folium.Map(location=[22.809872815747962, 32.562480661588175], 
+                   zoom_start=7, 
+                   tiles=None)
+
+    folium.TileLayer(
+        tiles=f'https://{{s}}.basemaps.cartocdn.com/light_all/{{z}}/{{x}}/{{y}}.png?key={CARTO_KEY}',
+        attr='© OpenStreetMap contributors © CARTO',
+        name='CARTO Positron',
+        control=False
+    ).add_to(m)
+
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
 
@@ -27,134 +40,134 @@ def app():
 
     from urllib.parse import urlparse
     for index, row in df.iterrows():
-     if row['epoca'] == "New Kingdom":
-        kw = {"prefix": "fa", "color": "red", "icon": "ankh"}
-        icon = folium.Icon(**kw)
-        divinita1 = f"{row['link_divinita1']}"
-        divinita2 = f"{row['link_divinita2']}"
-        divinita3 = f"{row['link_divinita3']}"
-        divinita4 = f"{row['link_divinita4']}"
-        faraone1 = f"{row['link_faraone1']}"
-        faraone2 = f"{row['link_faraone2']}"
-        faraone3 = f"{row['link_faraone3']}"
-        faraone4 = f"{row['link_faraone4']}"
-        faraone5 = f"{row['link_faraone5']}"
-        faraone6 = f"{row['link_faraone6']}"
-        faraone7 = f"{row['link_faraone7']}"
-        html = f'''
+        if row['epoca'] == "New Kingdom":
+            kw = {"prefix": "fa", "color": "red", "icon": "ankh"}
+            icon = folium.Icon(**kw)
+            divinita1 = f"{row['link_divinita1']}"
+            divinita2 = f"{row['link_divinita2']}"
+            divinita3 = f"{row['link_divinita3']}"
+            divinita4 = f"{row['link_divinita4']}"
+            faraone1 = f"{row['link_faraone1']}"
+            faraone2 = f"{row['link_faraone2']}"
+            faraone3 = f"{row['link_faraone3']}"
+            faraone4 = f"{row['link_faraone4']}"
+            faraone5 = f"{row['link_faraone5']}"
+            faraone6 = f"{row['link_faraone6']}"
+            faraone7 = f"{row['link_faraone7']}"
+            html = f'''
 
-        <center><b><h2>{row['nome']}</h2></b></center><br>
-        <p><b>Ancient location</b><br>{row['localita_antica']}
-        <p><b>New location</b><br>{row['localita_odierna']}
-        <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
-        <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
-        <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
-        <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
-        <p><b>Period</b><br>{row['epoca']}</a>
-        <p><b>Dynasty</b><br>{row['dinastia']}
-        <p><b>King</b>:
-        <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
-        <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
-        <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
-        <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
-        <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
-        <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
-        <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
-        '''
-        popup = folium.Popup(html,
-                     min_width=300,
-                     max_width=300)
-        folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
-        popup = popup,
-        tooltip=row['nome'],
-        icon = icon
-                    ).add_to(nk)
+            <center><b><h2>{row['nome']}</h2></b></center><br>
+            <p><b>Ancient location</b><br>{row['localita_antica']}
+            <p><b>New location</b><br>{row['localita_odierna']}
+            <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
+            <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
+            <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
+            <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
+            <p><b>Period</b><br>{row['epoca']}</a>
+            <p><b>Dynasty</b><br>{row['dinastia']}
+            <p><b>King</b>:
+            <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
+            <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
+            <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
+            <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
+            <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
+            <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
+            <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
+            '''
+            popup = folium.Popup(html,
+                         min_width=300,
+                         max_width=300)
+            folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
+            popup = popup,
+            tooltip=row['nome'],
+            icon = icon
+                        ).add_to(nk)
 
-     elif row['epoca'] == "Ptolemaic Kingdom":
-        kw = {"prefix": "fa", "color": "green", "icon": "ankh"}
-        icon = folium.Icon(**kw)
-        divinita1 = f"{row['link_divinita1']}"
-        divinita2 = f"{row['link_divinita2']}"
-        divinita3 = f"{row['link_divinita3']}"
-        divinita4 = f"{row['link_divinita4']}"
-        faraone1 = f"{row['link_faraone1']}"
-        faraone2 = f"{row['link_faraone2']}"
-        faraone3 = f"{row['link_faraone3']}"
-        faraone4 = f"{row['link_faraone4']}"
-        faraone5 = f"{row['link_faraone5']}"
-        faraone6 = f"{row['link_faraone6']}"
-        faraone7 = f"{row['link_faraone7']}"
-        html = f'''
+        elif row['epoca'] == "Ptolemaic Kingdom":
+            kw = {"prefix": "fa", "color": "green", "icon": "ankh"}
+            icon = folium.Icon(**kw)
+            divinita1 = f"{row['link_divinita1']}"
+            divinita2 = f"{row['link_divinita2']}"
+            divinita3 = f"{row['link_divinita3']}"
+            divinita4 = f"{row['link_divinita4']}"
+            faraone1 = f"{row['link_faraone1']}"
+            faraone2 = f"{row['link_faraone2']}"
+            faraone3 = f"{row['link_faraone3']}"
+            faraone4 = f"{row['link_faraone4']}"
+            faraone5 = f"{row['link_faraone5']}"
+            faraone6 = f"{row['link_faraone6']}"
+            faraone7 = f"{row['link_faraone7']}"
+            html = f'''
 
-        <center><b><h2>{row['nome']}</h2></b></center><br>
-        <p><b>Ancient location</b><br>{row['localita_antica']}
-        <p><b>New location</b><br>{row['localita_odierna']}
-        <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
-        <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
-        <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
-        <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
-        <p><b>Period</b><br>{row['epoca']}</a>
-        <p><b>Dynasty</b><br>{row['dinastia']}
-        <p><b>King</b>:
-        <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
-        <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
-        <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
-        <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
-        <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
-        <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
-        <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
-        '''
-        popup = folium.Popup(html,
-                     min_width=300,
-                     max_width=300)
-        folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
-        popup = popup,
-        tooltip=row['nome'],
-        icon = icon
-                    ).add_to(ptol)
+            <center><b><h2>{row['nome']}</h2></b></center><br>
+            <p><b>Ancient location</b><br>{row['localita_antica']}
+            <p><b>New location</b><br>{row['localita_odierna']}
+            <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
+            <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
+            <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
+            <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
+            <p><b>Period</b><br>{row['epoca']}</a>
+            <p><b>Dynasty</b><br>{row['dinastia']}
+            <p><b>King</b>:
+            <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
+            <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
+            <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
+            <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
+            <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
+            <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
+            <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
+            '''
+            popup = folium.Popup(html,
+                         min_width=300,
+                         max_width=300)
+            folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
+            popup = popup,
+            tooltip=row['nome'],
+            icon = icon
+                        ).add_to(ptol)
 
-     elif row['epoca'] == "Roman Period":
-        kw = {"prefix": "fa", "color": "blue", "icon": "ankh"}
-        icon = folium.Icon(**kw)
-        divinita1 = f"{row['link_divinita1']}"
-        divinita2 = f"{row['link_divinita2']}"
-        divinita3 = f"{row['link_divinita3']}"
-        divinita4 = f"{row['link_divinita4']}"
-        faraone1 = f"{row['link_faraone1']}"
-        faraone2 = f"{row['link_faraone2']}"
-        faraone3 = f"{row['link_faraone3']}"
-        faraone4 = f"{row['link_faraone4']}"
-        faraone5 = f"{row['link_faraone5']}"
-        faraone6 = f"{row['link_faraone6']}"
-        faraone7 = f"{row['link_faraone7']}"
-        html = f'''
+        elif row['epoca'] == "Roman Period":
+            kw = {"prefix": "fa", "color": "blue", "icon": "ankh"}
+            icon = folium.Icon(**kw)
+            divinita1 = f"{row['link_divinita1']}"
+            divinita2 = f"{row['link_divinita2']}"
+            divinita3 = f"{row['link_divinita3']}"
+            divinita4 = f"{row['link_divinita4']}"
+            faraone1 = f"{row['link_faraone1']}"
+            faraone2 = f"{row['link_faraone2']}"
+            faraone3 = f"{row['link_faraone3']}"
+            faraone4 = f"{row['link_faraone4']}"
+            faraone5 = f"{row['link_faraone5']}"
+            faraone6 = f"{row['link_faraone6']}"
+            faraone7 = f"{row['link_faraone7']}"
+            html = f'''
 
-        <center><b><h2>{row['nome']}</h2></b></center><br>
-        <p><b>Ancient location</b><br>{row['localita_antica']}
-        <p><b>New location</b><br>{row['localita_odierna']}
-        <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
-        <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
-        <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
-        <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
-        <p><b>Period</b><br>{row['epoca']}</a>
-        <p><b>Dynasty</b><br>{row['dinastia']}
-        <p><b>King</b>:
-        <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
-        <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
-        <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
-        <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
-        <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
-        <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
-        <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
-        '''
-        popup = folium.Popup(html,
-                     min_width=300,
-                     max_width=300)
-        folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
-        popup = popup,
-        tooltip=row['nome'],
-        icon = icon
-                    ).add_to(roman)
+            <center><b><h2>{row['nome']}</h2></b></center><br>
+            <p><b>Ancient location</b><br>{row['localita_antica']}
+            <p><b>New location</b><br>{row['localita_odierna']}
+            <p><b>Dedicated to</b>:<br><a href={divinita1} target="_blank">{row['divinita1']}</a>
+            <br><a href={divinita2} target="_blank">{row['divinita2']}</a>
+            <br><a href={divinita3} target="_blank">{row['divinita3']}</a>
+            <br><a href={divinita4} target="_blank">{row['divinita4']}</a>
+            <p><b>Period</b><br>{row['epoca']}</a>
+            <p><b>Dynasty</b><br>{row['dinastia']}
+            <p><b>King</b>:
+            <br><a href={faraone1} target="_blank">{row['faraone1']}</a>
+            <br><a href={faraone2} target="_blank">{row['faraone2']}</a>
+            <br><a href={faraone3} target="_blank">{row['faraone3']}</a>
+            <br><a href={faraone4} target="_blank">{row['faraone4']}</a>
+            <br><a href={faraone5} target="_blank">{row['faraone5']}</a>
+            <br><a href={faraone6} target="_blank">{row['faraone6']}</a>
+            <br><a href={faraone7} target="_blank">{row['faraone7']}</a>
+            '''
+            popup = folium.Popup(html,
+                         min_width=300,
+                         max_width=300)
+            folium.Marker([row['latitudine_antica'], row['longitudine_antica']],
+            popup = popup,
+            tooltip=row['nome'],
+            icon = icon
+                        ).add_to(roman)
 
     folium.plugins.Fullscreen(
     position="topright",
@@ -175,13 +188,8 @@ construction of the Second Aswan Dam.
 See below the map for few notes.
 """)
 
-    #Aggiungere istruzioni di navigazione della mappa
     folium_static(m, width=800, height=450)
-    # import streamlit.components.v1 as components
-    # with open("mappa_templi_nubiani.html",'r') as f: 
-    #     html_data = f.read()
 
-    # st.components.v1.html(html_data,height=400)
     st.subheader("Full screen and Legend")
     st.write("""
 On the top right of the map, you can find an icon that allows you to see the map in full screen.
