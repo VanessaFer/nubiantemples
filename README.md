@@ -1,75 +1,64 @@
-# The Submerged Temples of Nubia – Interactive Web App
-🔗 **Live app**: [Nubian Temples Project](https://nubiantemplesproject.streamlit.app/)
+# 🏛️ The Submerged Temples of Nubia – Interactive Web App
 
-## Project Overview
-A personal research project and interactive web application dedicated to the 
-Nubian temples that were relocated thanks to UNESCO's international campaign 
-(1960), following the construction of the Aswan Dams. The project is based on 
-the studies by Henri Gauthier, Aylward M. Blackman, and Gunther Röder, 
-published in the collection *Les Temples immergés de la Nubie*.
+Personal research project on the Nubian temples relocated after the UNESCO campaign (1960s),
+based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 
-The app is a work in progress — further temples and data will be added 
-over time.
+> 🚧 **Work in progress** – the database currently contains the data of the Temple of Kalabsha.
 
-## About
-I am Vanessa, a graduate in Archaeology and Cultures of the Ancient World 
-from the University of Bologna. My MA thesis, in the field of Egyptology, 
-focused on the offering scenes of the Temple of Kalabsha in which the god 
-Osiris appears. The Nubian Temples Project was born as a natural extension 
-of that research, with the goal of making the data collected during my 
-studies accessible and explorable through modern data tools.
+## Sections of the app
 
-## Features
+| Section | What it does | Code |
+|---|---|---|
+| Home | Project presentation | `sections/home.py` |
+| History | From the first Aswan Dam to the UNESCO campaign | `sections/history.py` |
+| Map | Interactive Folium map of the temples' original locations, filterable by period | `sections/temples_map.py` |
+| Machine Learning Project | "Predict the god": classifier on the iconography of four deities of Kalabsha | `sections/ml_project.py` |
+| Database | 139 offering scenes of the Temple of Kalabsha, with Gauthier's plates | `sections/database.py` |
+| Data Visualisation | Embedded Tableau dashboards on deities and kings | `sections/data_visualisation.py` |
+| Contacts | Contact information | `sections/contacts.py` |
 
-### 🏛️ History
-A detailed recap of the historical events that led to the relocation of the 
-Nubian temples, from the construction of the first Aswan Dam (1899-1902) 
-to the UNESCO campaign.
+## Repository structure
 
-### 🗺️ Map
-An interactive map showing the original locations of the relocated Nubian 
-temples, built with Folium. Temples are filtered by historical period 
-(New Kingdom, Ptolemaic Kingdom, Roman Period) and displayed as 
-color-coded clustered markers with pop-up information including temple 
-name, construction period, and associated pharaohs.
+```
+nubiantemples/
+├── main.py                  # entry point (Streamlit): sidebar menu + routing
+├── config.py                # centralised paths (DATA_DIR, ASSETS_DIR, ...)
+├── requirements.txt
+├── sections/                # one module per page of the app
+├── data/
+│   ├── tables/              # CSV / Excel tables used by the app and the DB
+│   ├── reference/           # supporting reference tables
+│   └── database/            # MySQL dump of the `templi` database
+├── models/                  # trained model (kalabsha_gods.pkl)
+├── assets/
+│   ├── images/              # temples, deities, branding
+│   └── plates/              # Gauthier's plates (Tav. *.jpg)
+├── docs/                    # presentation material, ER schema, reference images
+├── legacy/                  # old / unused scripts kept for reference
+└── .streamlit/              # secrets template (never commit secrets.toml)
+```
 
-### 🤖 Machine Learning – "Predict the God"
-A classification model that predicts which of the four main deities depicted 
-in the Temple of Kalabsha (Osiris, Isis, Merur, Uadjet) matches a set of 
-iconographic characteristics selected by the user (crown, posture, 
-accessories, etc.). The model was trained on data digitised from the 
-temple's offering scenes.
+## Run it locally
 
-### 🗄️ Database
-A MySQL database connected to the app via Python, containing data from the 
-offering scenes of the Temple of Kalabsha (139 scenes). Users can query the 
-database across multiple tabs:
-- **Bibliography** – search by book title and page number
-- **Scene** – query individual scenes by code (KB1–KB139), with the option 
-  to download results as an Excel file
-- **Deity** – query data about specific deities
-- **Temple area** and **Bibliography of the temple**
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+streamlit run main.py
+```
 
-### 📊 Data Visualisation
-Interactive Tableau dashboards embedded in the app, visualising data about 
-the deities of the Temple of Kalabsha: their appearance, posture, crowns, 
-clothing, epithets, and the gifts they give and receive. Dashboards support 
-drill-down interaction by clicking on the charts.
+Optional: copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` to set the CARTO key.
 
-## Technologies Used
-- Python
-- Streamlit
-- Folium
-- MySQL
-- Tableau
-- Pandas
-- Scikit-learn (Machine Learning)
-- Rhino 3D (for the 2D spatial reference model of the temple walls)
+## Database
 
-## Status
-🚧 Work in progress — currently the database contains data from the 
-Temple of Kalabsha. 
-Further temples will be added in future updates.
+The relational database was designed in MySQL (ER schema in `docs/presentation/`).
+To recreate it: `mysql -u <user> -p < data/database/db_templi_2024-11-16.sql`.
+The web app reads the exported tables in `data/tables/`.
+
+## Technologies
+
+Python · Streamlit · Folium · Pandas · Scikit-learn · MySQL · Tableau · Rhino 3D
 
 ## Contacts
+
 nubiantemples.project@gmail.com

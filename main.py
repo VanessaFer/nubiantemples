@@ -3,10 +3,12 @@ from PIL import Image
 from streamlit_option_menu import option_menu
 #crea il menù a lato della webapp
 
-import contacts, mlproject, history, home, map, datavisualisation, databasekalabsha
+from config import IMAGES_DIR
+from sections import (contacts, ml_project, history, home, temples_map,
+                      data_visualisation, database)
 #non scrivere il .py
 
-im = Image.open("icona_sito1.png")
+im = Image.open(IMAGES_DIR / "branding" / "site_icon.png")
 #https://www.rawpixel.com/image/6314650/png-template-vintage
 st.set_page_config(
     page_title="Nubian Temples Project",
@@ -45,13 +47,13 @@ class MultiApp:
         if app == "History":
             history.app()
         if app == "Map":
-            map.app()
+            temples_map.app()
         if app == "Machine Learning Project":
-            mlproject.app()
+            ml_project.app()
         if app == "Database":
-            databasekalabsha.app()  
+            database.app()  
         if app == "Data Visualisation":
-            datavisualisation.app()
+            data_visualisation.app()
         if app == "Contacts":
             contacts.app()
     
