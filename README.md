@@ -3,7 +3,7 @@
 Personal research project on the Nubian temples relocated after the UNESCO campaign (1960s),
 based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 
-> 🚧 **Work in progress** – the database currently contains the data of the Temple of Kalabsha.
+> **Work in progress!** – the database currently contains the data of the Temple of Kalabsha.
 
 ## Sections of the app
 
