@@ -23,18 +23,23 @@ based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 nubiantemples/
 ├── main.py                  # entry point (Streamlit): sidebar menu + routing
 ├── config.py                # centralised paths (DATA_DIR, ASSETS_DIR, ...)
+├── db.py                    # data access: Supabase first, local tables as fallback
 ├── requirements.txt
 ├── sections/                # one module per page of the app
 ├── data/
 │   ├── tables/              # CSV / Excel tables used by the app and the DB
-│   ├── reference/           # supporting reference tables
-│   └── database/            # MySQL dump of the `templi` database
+│   └── reference/           # supporting reference tables
+├── database/
+│   ├── mysql/               # MySQL dump
+│   └── postgres/            # PostgreSQL version (01_schema ... 06_corrections)
+├── scripts/                 # convert_mysql_dump.py, load_to_supabase.py, check_against_excel.py, keep_alive.py
 ├── models/                  # trained model (kalabsha_gods.pkl)
 ├── assets/
 │   ├── images/              # temples, deities, branding
 │   └── plates/              # Gauthier's plates (Tav. *.jpg)
 ├── docs/                    # presentation material, ER schema, reference images
 ├── legacy/                  # old / unused scripts kept for reference
+├── .github/workflows/       # keeps the free Supabase project from pausing
 └── .streamlit/              # secrets template (never commit secrets.toml)
 ```
 
@@ -47,17 +52,23 @@ pip install -r requirements.txt
 streamlit run main.py
 ```
 
-Optional: copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` to set the CARTO key.
+Copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` to set the database connection (and the optional CARTO key). Without it the app runs on the local tables.
 
 ## Database
 
-The relational database was designed in MySQL (ER schema in `docs/presentation/`).
-To recreate it: `mysql -u <user> -p < data/database/db_templi_2024-11-16.sql`.
-The web app reads the exported tables in `data/tables/`.
+The relational database (31 tables, ER schema in `docs/presentation/`) was designed in MySQL and is
+hosted on PostgreSQL (Supabase). The webapp queries three views (`v_scene_overview`,
+`v_scene_characters`, `v_scene_bibliography`); if the database is unreachable it falls back to the
+Excel tables in `data/tables/`.
+
+- `database/mysql/` – MySQL dump
+- `database/postgres/` – the same database converted for PostgreSQL (schema, data, constraints, views, security, small corrections)
+- `scripts/` – dump converter, loader, check against the Excel tables, keep-alive script
+- Setup guide: [`docs/supabase_setup.md`](docs/supabase_setup.md)
 
 ## Technologies
 
-Python · Streamlit · Folium · Pandas · Scikit-learn · MySQL · Tableau · Rhino 3D
+Python · Streamlit · Folium · Pandas · Scikit-learn · MySQL · PostgreSQL (Supabase) · Tableau · Rhino 3D
 
 ## Contacts
 

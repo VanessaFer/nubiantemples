@@ -1,0 +1,22 @@
+name: Keep Supabase alive
+
+# Ogni 3 giorni fa una query al database, così Supabase (piano gratuito)
+# non lo mette in pausa per inattività. Si può lanciare anche a mano da
+# GitHub -> Actions -> Keep Supabase alive -> Run workflow.
+on:
+  schedule:
+    - cron: "17 6 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install psycopg2-binary
+      - run: python scripts/keep_alive.py
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

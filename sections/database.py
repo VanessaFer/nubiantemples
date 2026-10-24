@@ -1,4 +1,5 @@
 from config import TABLES_DIR, PLATES_DIR
+from db import load_table
 import streamlit as st
 import pandas as pd
 # import mysql.connector
@@ -12,7 +13,7 @@ def app():
     st.title("The Database of the Temple of Kalabsha")
     st.header("A look through the data")
     st.subheader("A quick introduction to the database")
-    st.html("""The database was created with MySQL and then connected to the webapp through Python.<br>
+    st.html("""The database was designed with MySQL and is hosted on PostgreSQL (Supabase); the webapp queries it through Python.<br>
     As you can see below, there are two tabs:<br>
     - Scene<br>
     - Deity<br>
@@ -53,7 +54,7 @@ def app():
 
         st.write("")
         st.write("SCENE")
-        df = pd.read_excel(TABLES_DIR / 'scena_stanze_registro_titolo.xlsx')
+        df = load_table('v_scene_overview')
             # df = df.loc[:,~df.columns.duplicated()]
         df = df.loc[:,~df.columns.str.startswith('codice')]
         df_scene = df.loc[df['sceneAcronym'] == codice_scena]
@@ -63,7 +64,7 @@ def app():
 
         st.write("")
         st.write("CHARACTERS")
-        df2 = pd.read_excel(TABLES_DIR / 'SCENA_PERSONAGGIO.xlsx')
+        df2 = load_table('v_scene_characters')
             # df = df.loc[:,~df.columns.duplicated()]
         df2 = df2.loc[:,~df2.columns.str.startswith('codice')]
         df_char = df2.loc[df2['sceneAcronym'] == codice_scena]
@@ -73,7 +74,7 @@ def app():
 
         st.write("")
         st.write("BIBLIOGRAPHY")
-        df1 = pd.read_excel(TABLES_DIR / 'SCENA_BIBLIOGRAFIA.xlsx')
+        df1 = load_table('v_scene_bibliography')
             # df = df.loc[:,~df.columns.duplicated()]
         df1 = df1.loc[:,~df1.columns.str.startswith('codice')]
         df_bibl = df1.loc[df1['sceneAcronym'] == codice_scena]
