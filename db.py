@@ -45,4 +45,8 @@ def load_table(name: str) -> pd.DataFrame:
             "Please reload the page in a minute."
         )
         st.caption(f"Technical detail: {type(e).__name__}: {_safe(str(e))[:400]}")
+        try:
+            st.caption(f"Secret sections found: {list(st.secrets.keys())}")
+        except Exception:
+            pass
         st.stop()
