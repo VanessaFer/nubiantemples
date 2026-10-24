@@ -44,11 +44,6 @@ def app():
     with col2:
         st.image(str(IMAGES_DIR / "temples" / "Kalabsha.jpg"), caption = "The Temple of Kalabsha from the Nile River", width = 400)
     
-    app_path = 'http://localhost:8501'
-    page = "kalabsha"
-    st.markdown(f'''<a href="{app_path}/{page}" target="_self">Temple of Kalabsha</a>''',
-    unsafe_allow_html=True)
-    
     st.divider()  
 
     st.header("A small guide to the website")
@@ -56,9 +51,14 @@ def app():
     This website is structured as it follows:
     - **Home**: here you can find some information about the project and a small guide to the website
     - **History**: in this page there is a recap about the relocation of the Nubian temples
-    - **Map**: a digital and interactive map waits for you to explore the Nubian temples through some information
+    - **Map**: a digital and interactive map waits for you to explore the Nubian temples through some 
+             information
+    - **Machine Learning**: here is a simple classification model that will try to recognize
+             the deity for you
     - **Database**: this is the core of the project. In this page you can query the database in order
              to have the data you need
+    - **Data Visualisation**: a graphic visualisation of the Database page, where you can 
+             interact with the diagrams to give an easier look to the data
     - **Contacts**: if you have some advices, please feel free to contact me!
 """)
     

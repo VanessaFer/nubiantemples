@@ -3,7 +3,7 @@
 Personal research project on the Nubian temples relocated after the UNESCO campaign (1960s),
 based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 
-> **Work in progress!** – the database currently contains the data of the Temple of Kalabsha.
+> 🚧 **Work in progress** – the database currently contains the data of the Temple of Kalabsha.
 
 ## Sections of the app
 
@@ -22,22 +22,19 @@ based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 ```
 nubiantemples/
 ├── main.py                  # entry point (Streamlit): sidebar menu + routing
-├── config.py                # centralised paths (DATA_DIR, ASSETS_DIR, ...)
-├── db.py                    # data access: Supabase first, local tables as fallback
+├── config.py                # centralised paths (ASSETS_DIR, IMAGES_DIR, ...)
+├── db.py                    # data access: every query goes to Supabase
 ├── requirements.txt
 ├── sections/                # one module per page of the app
-├── data/
-│   ├── tables/              # CSV / Excel tables used by the app and the DB
-│   └── reference/           # supporting reference tables
 ├── database/
 │   ├── mysql/               # MySQL dump
-│   └── postgres/            # PostgreSQL version (01_schema ... 06_corrections)
-├── scripts/                 # convert_mysql_dump.py, load_to_supabase.py, check_against_excel.py, keep_alive.py
+│   └── postgres/            # PostgreSQL version (01_schema ... 06_corrections, views, map table)
+├── scripts/                 # convert_mysql_dump.py, load_to_supabase.py, keep_alive.py
 ├── models/                  # trained model (kalabsha_gods.pkl)
 ├── assets/
-│   ├── images/              # temples, deities, branding
+│   ├── images/              # temples, deities, diagrams, references, branding
 │   └── plates/              # Gauthier's plates (Tav. *.jpg)
-├── docs/                    # presentation material, ER schema, reference images
+├── docs/                    # presentation material, ER schema
 ├── legacy/                  # old / unused scripts kept for reference
 ├── .github/workflows/       # keeps the free Supabase project from pausing
 └── .streamlit/              # secrets template (never commit secrets.toml)
@@ -52,18 +49,17 @@ pip install -r requirements.txt
 streamlit run main.py
 ```
 
-Copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` to set the database connection (and the optional CARTO key). Without it the app runs on the local tables.
+Copy `.streamlit/secrets.toml.example` to `.streamlit/secrets.toml` to set the database connection (and the optional CARTO key).
 
 ## Database
 
 The relational database (31 tables, ER schema in `docs/presentation/`) was designed in MySQL and is
-hosted on PostgreSQL (Supabase). The webapp queries three views (`v_scene_overview`,
-`v_scene_characters`, `v_scene_bibliography`); if the database is unreachable it falls back to the
-Excel tables in `data/tables/`.
+hosted on PostgreSQL (Supabase). Every table shown by the webapp is a view (`v_*`) or table of this database
+(see `database/postgres/04_views.sql`); no Excel/CSV files are needed.
 
 - `database/mysql/` – MySQL dump
 - `database/postgres/` – the same database converted for PostgreSQL (schema, data, constraints, views, security, small corrections)
-- `scripts/` – dump converter, loader, check against the Excel tables, keep-alive script
+- `scripts/` – dump converter, loader, keep-alive script
 - Setup guide: [`docs/supabase_setup.md`](docs/supabase_setup.md)
 
 ## Technologies

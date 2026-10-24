@@ -11,3 +11,8 @@ WHERE caratteristiche_personaggio = 'human appearance';
 UPDATE scena
 SET oggetti_presenti = regexp_replace(oggetti_presenti, '\s{2,}', ' ', 'g')
 WHERE oggetti_presenti ~ '\s{2,}';
+
+-- 3) doppi spazi negli autori della bibliografia dei templi
+UPDATE bibliografia_tempio
+SET autore_bibliografia_tempio = regexp_replace(autore_bibliografia_tempio, ' {2,}', ' ', 'g')
+WHERE autore_bibliografia_tempio ~ ' {2,}';

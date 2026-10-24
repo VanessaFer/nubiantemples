@@ -1,13 +1,13 @@
 # Database su Supabase: guida passo-passo
 
-L'app legge i dati dal database PostgreSQL ospitato su Supabase. Se il database non
-risponde (per esempio è in pausa), ripiega automaticamente sui file Excel in `data/tables/`.
+L'app legge **tutti** i dati direttamente dal database PostgreSQL ospitato su Supabase (nessun file Excel/CSV).
+Se il database è in pausa l'app mostra un avviso: ripristinalo da Supabase (Restore project) e ricarica la pagina.
 
 ```
 MySQL locale -> dump -> scripts/convert_mysql_dump.py -> database/postgres/*.sql
                                                               |  scripts/load_to_supabase.py
                                                               v
-                                     Supabase (PostgreSQL)  <-  app Streamlit (db.py, viste v_scene_*)
+                                     Supabase (PostgreSQL)  <-  app Streamlit (db.py, viste v_*)
 ```
 
 Vengono portate **tutte le 31 tabelle** del database `templi`. L'app usa tre viste
@@ -27,8 +27,8 @@ python scripts/convert_mysql_dump.py database/mysql/NUOVO_DUMP.sql database/post
 ```
 
 I file scritti a mano non vengono toccati: `04_views.sql` (le viste usate dall'app), `05_security.sql`
-(blocca l'accesso pubblico via API) e `06_corrections.sql` (due correzioni di testo fatte negli Excel
-dopo l'export: "human appearance" -> "human" e i doppi spazi in 2 scene). Se le correggi in MySQL,
+(blocca l'accesso pubblico via API) e `04a_temples_map.sql` (i dati della mappa dei templi) e `06_corrections.sql` (correzioni di testo fatte
+dopo l'export: "human appearance" -> "human" e i doppi spazi). Se le correggi in MySQL,
 puoi svuotare quel file.
 
 ## 1. Creare il progetto Supabase
@@ -60,13 +60,7 @@ python scripts/load_to_supabase.py
 Alla fine deve scrivere `Fatto. Scene caricate: ...`. Lo script è in un'unica transazione
 (se c'è un errore non cambia nulla) e si può rilanciare quando vuoi: ricrea le tabelle da zero.
 
-**Verifica**: confronta il database con gli Excel (serve `pip install pandas sqlalchemy openpyxl`):
-
-```bash
-python scripts/check_against_excel.py
-```
-
-Se le tre viste risultano `IDENTICHE`, il database è aggiornato quanto gli Excel (al momento della consegna lo erano tutte e tre).
+**Verifica**: nell'app apri le pagine Database e Temples map e fai qualche ricerca.
 
 ## 3. Collegare l'app Streamlit
 
@@ -90,5 +84,4 @@ un workflow GitHub (`.github/workflows/keep-supabase-alive.yml`) che ogni 3 gior
 Attenzione: GitHub disattiva i workflow programmati nelle repo pubbliche senza attività per 60 giorni.
 Se succede, basta riattivarlo da Actions (o fare un commit).
 
-Se il progetto va comunque in pausa: Supabase -> **Restore project**. Nel frattempo l'app
-continua a funzionare con gli Excel di riserva.
+Se il progetto va comunque in pausa: Supabase -> **Restore project**. Finché è in pausa l'app mostra solo un avviso.

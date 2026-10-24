@@ -1,21 +1,12 @@
-"""Accesso ai dati dell'app.
+"""Accesso al database Supabase (PostgreSQL).
 
-Prima prova a leggere dal database (Supabase/PostgreSQL, configurato nei Secrets).
-Se il database non è raggiungibile (in pausa, secrets mancanti, ecc.) ripiega
-sui file in data/tables/, così l'app resta utilizzabile.
+Tutti i dati mostrati dall'app arrivano da qui: le tabelle sono viste/tabelle del database
+(vedi database/postgres/04_views.sql). La stringa di connessione sta solo nei Secrets
+di Streamlit (sezione [supabase], chiave url), mai nel codice.
 """
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine, text
-
-from config import TABLES_DIR
-
-# tabella del database -> file di riserva
-FALLBACK_FILES = {
-    "v_scene_overview": "scena_stanze_registro_titolo.xlsx",
-    "v_scene_characters": "SCENA_PERSONAGGIO.xlsx",
-    "v_scene_bibliography": "SCENA_BIBLIOGRAFIA.xlsx",
-}
 
 
 @st.cache_resource
@@ -27,16 +18,18 @@ def _engine():
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
-def _query_database(view: str) -> pd.DataFrame:
-    # le eccezioni non vengono messe in cache: al tentativo successivo riprova
+def _query(name: str) -> pd.DataFrame:
     with _engine().connect() as conn:
-        return pd.read_sql(text(f'SELECT * FROM "{view}"'), conn)
+        return pd.read_sql(text(f'SELECT * FROM "{name}"'), conn)
 
 
-def load_table(view: str) -> pd.DataFrame:
-    """Restituisce la tabella richiesta come DataFrame."""
+def load_table(name: str) -> pd.DataFrame:
+    """Legge una vista/tabella del database. Se il database non risponde mostra un avviso e ferma la pagina."""
     try:
-        return _query_database(view)
+        return _query(name)
     except Exception:
-        st.session_state["data_source"] = "offline"
-        return pd.read_excel(TABLES_DIR / FALLBACK_FILES[view])
+        st.error(
+            "The database is not reachable right now (it may be waking up). "
+            "Please reload the page in a minute."
+        )
+        st.stop()

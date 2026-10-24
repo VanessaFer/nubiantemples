@@ -3,7 +3,7 @@ import streamlit as st
 
 def app():
 
-    st.header("Contacts")
+    st.title("Contacts")
     st.write("""
              Hi everyone! It's Vanessa here.
 

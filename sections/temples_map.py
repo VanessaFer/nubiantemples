@@ -1,4 +1,4 @@
-from config import TABLES_DIR
+from db import load_table
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,7 +18,7 @@ except Exception:
 
 def app():
 
-    df = pd.read_csv(TABLES_DIR / "temples.csv")
+    df = load_table("mappa_templi").astype(object).where(lambda d: d.notna(), np.nan)
 
     m = folium.Map(location=[22.809872815747962, 32.562480661588175], 
                    zoom_start=7, 

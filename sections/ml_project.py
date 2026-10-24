@@ -8,18 +8,8 @@ import sklearn as sk
 #pip install mysql-connector-python
 def app():
 
-    st.header("Predict the God")
-    st.subheader("A Machine Learning model")
-
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.image(str(IMAGES_DIR / "deities" / "Osiris.png"), caption = "The god Osiris", width = 150)
-    with col2:
-        st.image(str(IMAGES_DIR / "deities" / "Isis.png"), caption = "The goddess Isis", width = 150)
-    with col3:
-        st.image(str(IMAGES_DIR / "deities" / "Merur.png"), caption = "The god Merur", width = 150)
-    with col4:
-        st.image(str(IMAGES_DIR / "deities" / "Uadjet.png"), caption = "The goddess Uadjet", width = 150)
+    st.title("Predict the God")
+    st.header("A Machine Learning model")
 
     st.write("""
     This little Machine Learning project idea aims to create a model which can classify
@@ -30,7 +20,6 @@ def app():
     - Isis
     - Merur
     - Uadjet
-    as you can see in the pictures above.
 
     It would be great to deepen this model with more data from other Nubian temples. 
              Would the model be
@@ -45,84 +34,126 @@ def app():
     
     st.divider()
 
-    st.subheader("A brief introduction to the Four Deities")
+    st.header("A brief introduction to the Four Deities")
 
     st.html("""
-As said before, below you can find some information about Osiris, Isis, Merur and Wadjet.
-<br><b>Osiris</b> 
-<br>Osiris is the God of the Underworld. He has the form of a mummy: he wears a long
+As said before, below you can find some information about Osiris, Isis, Merur and Uadjet.
+<br><br><b><h5>Osiris</h5></b> 
+Osiris is the God of the Underworld. He usually has the aspect of a mummy: he wears a long
             coat that covers his whole body, while he keeps the arms crossed on his chest.
-<br>However, in the temple of Kalabsha Osiris is usually drawn as all the other male deities. He
-            wears a skirt, sometimes combined with a corset on the upper part of his body.
-<br>In this temple he wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
+<br>However, in the temple of Kalabsha Osiris is often drawn as most of the other kings and male deities. He
+            wears a skirt, sometimes combined with a corset worn on the upper part of his body.
+<br>In this temple he generally wears the Atef Crown, a crown made by the White Crown or reeds between two ostrich
             feathers.
             
-<br><b>Isis</b> 
-<br>Isis is the Goddess of Magic. She is the sister and the wife of Osiris.
+<br><br><b><h5>Isis</h5></b> 
+Isis is the Goddess of Magic. She is the sister and the wife of Osiris.
             <br>She wears a crown made by a solar disc between two cow horns. On the top of the solar
             disc, there is the hyerogliph of the throne, that typically represents Isis.
             
-<br><b>Merur</b> 
-<br>Merur is the local God of Kalabsha. He usually wears a crown made by three Atef Crowns, ram horns,
+<br><br><b><h5>Merur</h5></b> 
+Merur is the local God of Kalabsha. He usually wears a crown made by three Atef Crowns, ram horns,
             uraei and solar discs.
             
-<br><b>Uadjet</b> 
-<br>Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
+<br><br><b><h5>Uadjet</h5></b> 
+Uadjet is the Goddess of Lower Egypt. She is often depicted wearing the Red Crown.
 """)
 
+    st.divider()
 
+    st.header("And now... predict the deity!")
 
-    # model_pipe = joblib.load(MODELS_DIR / "kalabsha_gods.pkl")
+    st.html("""You can choose among several options. Select the ones that you like the most and let the machine learning model guess which deity is the one who has the characteristics that you selected!
+    <br>If you don't know what to choose, you can look at the pictures below and find some inspiration!""")
 
-    # tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.image(str(IMAGES_DIR / "deities" / "Osiris.png"), caption = "The god Osiris", width = 150)
+    with col2:
+        st.image(str(IMAGES_DIR / "deities" / "Isis.png"), caption = "The goddess Isis", width = 150)
+    with col3:
+        st.image(str(IMAGES_DIR / "deities" / "Merur.png"), caption = "The god Merur", width = 150)
+    with col4:
+        st.image(str(IMAGES_DIR / "deities" / "Uadjet.png"), caption = "The goddess Uadjet", width = 150)
 
-    # ordine_comparizione = st.number_input("Digit the position",value=None, placeholder="Type a number from 1 to 5")
+    st.subheader("Pick one!")
+    
+    model_pipe = joblib.load(MODELS_DIR / "kalabsha_gods.pkl")
 
-    # seduto_stante = st.radio("Select weather the deity is seated or standing", ["seated", "standing"])
+    tipologia_personaggio = st.radio("Select the sex of the deity", ["God", "Goddess"])
+    st.write("You selected:", tipologia_personaggio)
 
-    # tipologia_corona = st.selectbox("Select the crown type", 
-    #                    ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
-    #                     "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
-    #                     "pshent", "Lower Egypt crown", "headgear"])
+    ordine_comparizione = st.number_input("Digit the position",value=None, placeholder="Type a number from 1 to 5")
+    st.write("You selected:", ordine_comparizione)
 
-    # tipologia_abito = st.selectbox("Select the dress type", 
-    #                    ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"])
+    seduto_stante = st.radio("Select weather the deity is seated or standing", ["seated", "standing"])
+    st.write("You selected:", seduto_stante)
 
-    # nome_accessorio = st.selectbox("Select the accessory", 
-    #                    ['ankh', 'wadj-sceptre', 'necklace', 'wrist bracelet',
-    #    'arm bracelet', 'ankle bracelet', 'feet destroyed', 'destroyed',
-    #    'top of the sceptre destroyed', 'left hand destroyed',
-    #    'was-sceptre', 'neck destroyed', 'false beard',
-    #    'right hand destroyed', 'arms destroyed', 'face destroyed',
-    #    'necklace with jb-sign', 'Red Crown', 'garland',
-    #    'right hand raised', 'left hand raised', 'breeding Horus',
-    #    'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'])
+    tipologia_corona = st.selectbox("Select the crown type", 
+                       ["headgear, solar disc crown","solar disc crown","headgear, feathered crown",
+                        "Atef crown", "headgear, Atef crown", "Lower Egypt crown, Atef crown",
+                        "pshent", "Lower Egypt crown"], placeholder="Pick one from the list of crowns",)
+    st.write("You selected:", tipologia_corona)
 
-    # data = {
-    #     "tipologia_personaggio": [tipologia_personaggio],
-    #     "ordine_comparizione": [ordine_comparizione],
-    #     "seduto_stante": [seduto_stante],
-    #     "templi corona.tipologia_corona":[tipologia_corona],
-    #     "templi abito.tipologia_abito": [tipologia_abito],
-    #     "templi accessorio.nome_accessorio": [nome_accessorio],
-    #     }
+    tipologia_abito = st.selectbox("Select the dress type", 
+                       ["dress", "corset, skirt", "skirt", "naked, cloak", "cloak"], placeholder="Pick one from the list of dresses",)
+    st.write("You selected:", tipologia_abito)
 
-    # input_df = pd.DataFrame(data)
+    nome_accessorio = st.selectbox("Select the accessory", 
+                       ['wadj-sceptre', 'ankle bracelet',
+       'was-sceptre', 'false beard',
+       'necklace with jb-sign', 
+       'right hand raised', 'left hand raised',
+       'finger to the mouth', 'flogger/fly swatter', 'ḥḳꜣ scepter'], placeholder="Pick one from the accessory list",)
+    st.write("You selected:", nome_accessorio)
 
-    # if st.button("Prediction"):
-    #     res = model_pipe.predict(input_df).astype(int)[0]
+    data = {
+        "tipologia_personaggio": [tipologia_personaggio],
+        "ordine_comparizione": [ordine_comparizione],
+        "seduto_stante": [seduto_stante],
+        "templi corona.tipologia_corona":[tipologia_corona],
+        "templi abito.tipologia_abito": [tipologia_abito],
+        "templi accessorio.nome_accessorio": [nome_accessorio],
+        }
 
-    #     classes = {0:'Isis',
-    #        1:'Osiris',
-    #        2:'Merur',
-    #        3:'Uadjet'
-    #        }
+    input_df = pd.DataFrame(data)
 
-    #     y_pred = classes[res]
+    if st.button("Prediction"):
+        res = model_pipe.predict(input_df).astype(int)[0]
 
-    #     st.success(f'The name of the deity is: {y_pred}.')
+        classes = {0:'Isis',
+           1:'Osiris',
+           2:'Merur',
+           3:'Uadjet'
+           }
+
+        y_pred = classes[res]
+
+        st.success(f'The name of the deity is: {y_pred}.')
+        
 # def app():
 #     st.header("The Temple of Kalabsha")
 #     st.subheader("*A Database of all the offering scenes of the temple*")
 
 #     #st.write("Work in progress!")
+
+
+#     connection = mysql.connector.connect(
+#     host = "localhost",
+#     user = "root",
+#     password = "vanni1791",
+#     database = "templi"
+# )
+
+#     #print("connected")
+
+#     cursor = connection.cursor()
+
+#     cursor.execute("Select * from personaggio")
+#     data = cursor.fetchall()
+
+#     df = pd.DataFrame(data, columns = cursor.column_names)
+#     st.dataframe(df, hide_index=True)
+
+#     #Seleziono dati da una delle colonne della tabella che ho selezionato
+#     st.write(df[df["nome_personaggio"] == "Osiris"])
