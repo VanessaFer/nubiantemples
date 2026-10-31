@@ -122,3 +122,20 @@ FROM bibliografia_tempio b
 LEFT JOIN tempio_libro tl ON tl.codice_bibliografia_tempio = b.codice_bibliografia_tempio
 LEFT JOIN tempio te ON te.codice_tempio = tl.codice_tempio
 ORDER BY b.codice_bibliografia_tempio;
+
+-- Vista per la sezione Epithets dei grafici: un epiteto per riga, con divinità e ambiente del tempio.
+CREATE OR REPLACE VIEW v_epithets AS
+SELECT s.sigla_scena            AS "sceneAcronym",
+       a.tipo_ambiente          AS "room",
+       pe.nome_personaggio      AS "deityName",
+       e.epiteto_traslitterato  AS "epithet",
+       e.epiteto_tradotto       AS "translation",
+       e.epiteto_note           AS "notes"
+FROM possiede po
+JOIN personaggio pe                  ON pe.codice_personaggio = po.codice_personaggio
+JOIN epiteto e                       ON e.codice_epiteto = po.codice_epiteto
+LEFT JOIN scena s                    ON s.codice_scena = pe.codice_scena
+LEFT JOIN parte p                    ON p.codice_parte = s.codice_parte
+LEFT JOIN elemento_architettonico ea ON ea.codice_e_a = p.codice_e_a
+LEFT JOIN ambiente a                 ON a.codice_ambiente = ea.codice_ambiente
+ORDER BY s.codice_scena, pe.codice_personaggio, po.codice_possiede;
