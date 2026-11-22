@@ -53,7 +53,6 @@ def app():
                       <br>Here are a couple of links where you can find the PDF version of the book:
                       <br><a href = http://www.archive.org/details/letempledekalabc01gaut>Le temple de Kalabchah pt.1</a>
                       <br><a href = http://www.archive.org/details/letempledekalabc02gaut>Le temple de Kalabchah pt.2</a>
-                      <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Plates</a>
                       <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Color plates</a>
                       <br>Unfortunately, the quality of the plates is not high, but luckily you can do
                       some research here and have a look at the plates with a better resolution.
