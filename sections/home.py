@@ -2,7 +2,7 @@ from config import IMAGES_DIR
 import streamlit as st
 
 def app():
-    st.title("The submerged Temples of Nubia")
+    st.title("The Submerged Temples of Nubia")
     st.subheader("*A project dedicated to the temples that were relocated*") #markdown
     st.markdown(
         '<div class="nt-note"><b>Phase 1:</b> the offering scenes of the temple of Kalabsha. '

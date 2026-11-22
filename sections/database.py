@@ -133,18 +133,18 @@ def app():
         st.html("""The temple of Kalabsha has <b>139</b> offering scenes.
                 <br>As this project should become bigger by recording more offering scenes from other
                 Nubian temples, I assigned an acronym to this temple: <b>KB</b>.<br>
-                Lat's say you would like to have the information about the first
+                Let's say you would like to have the information about the first
                 scene of the temple, you should type <b>KB1</b> (no space between the letters and the
                 number!).
                 <br>You should also keep in mind that the scenes are recorded in the order given by
                 Henri Gauthier: from the innermost room, the Sanctuary (Cella of Gauthier) to the Pylon,
                 so KB1 is the first scene of the Cella that he describes.
                 <br><br>
-                Once you have wrote the scene code, you can both have a look at the output and download the
-                Excel file containing the data splitted into three sheets.
+                Once you have written the scene code, you can both have a look at the output and download the
+                Excel file containing the data split into three sheets.
                 """)
         st.divider()
-        st.subheader("Writhe the code of the scene")
+        st.subheader("Write the code of the scene")
         st.html("""You can write a scene code between KB1 and KB139.""")
         codice_scena = st.text_input("Scene code")
         st.write("You wrote:", codice_scena)
