@@ -4,8 +4,9 @@ from streamlit_option_menu import option_menu
 #crea il menù a lato della webapp
 
 from config import IMAGES_DIR
+import style
 from sections import (contacts, ml_project, history, home, temples_map,
-                      data_visualisation, database)
+                      data_visualisation, database, bibliography)
 #non scrivere il .py
 
 im = Image.open(IMAGES_DIR / "branding" / "site_icon.png")
@@ -26,20 +27,16 @@ class MultiApp:
             "function": function
         })
     def run():
+        style.apply()
+        style.sidebar_brand()
         with st.sidebar:
             app = option_menu(
                 menu_title = "Menu",
-                options = ["Home", "History", "Map", "Machine Learning Project", "Database", "Data Visualisation", "Contacts"],
-                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-box", "bi-database", "bar-chart", "bi-envelope"],
-                #orientation = "horizontal",
+                options = ["Home", "History", "Map", "Machine Learning Project", "Database", "Data Visualisation", "Bibliography", "Contacts"],
+                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-box", "bi-database", "bar-chart", "bi-book", "bi-envelope"],
                 menu_icon = "bi-list",
                 default_index = 0,
-                styles = {
-                    "container": {"padding": "5!important", "background-color": "black"},
-                    "icon": {"color": "white", "font-size": "23px"},
-                    "nav-link": {"color": "white", "font-size": "20 px", "text-align": "left", "margin": "0px" },
-                    "nav-link-selected": {"color": "black", "background-color": "#C2B280"}
-                }
+                styles = style.MENU_STYLES
             )
         
         if app == "Home":
@@ -54,6 +51,8 @@ class MultiApp:
             database.app()  
         if app == "Data Visualisation":
             data_visualisation.app()
+        if app == "Bibliography":
+            bibliography.app()
         if app == "Contacts":
             contacts.app()
     

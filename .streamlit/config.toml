@@ -1,0 +1,13 @@
+# Tema del sito: scuro con oro e turchese (colori dei gioielli egizi).
+# Il colore principale sostituisce il rosso di slider, schede, caselle e interruttori.
+[theme]
+base = "dark"
+primaryColor = "#c99b38"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#1a1c24"
+textColor = "#ece6d6"
+linkColor = "#8fd7d7"
+
+[theme.sidebar]
+backgroundColor = "#0b0d12"
+secondaryBackgroundColor = "#14161d"

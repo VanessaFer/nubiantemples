@@ -59,6 +59,7 @@ def app():
              to have the data you need
     - **Data Visualisation**: a graphic visualisation of the Database page, where you can 
              interact with the diagrams to give an easier look to the data
+    - **Bibliography**: the bibliography of the temple of Kalabsha, with a search by author, title or year
     - **Contacts**: if you have some advices, please feel free to contact me!
 """)
     

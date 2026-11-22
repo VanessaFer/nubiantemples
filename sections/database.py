@@ -30,7 +30,7 @@ def app():
     st.divider()
 
     st.subheader("Research area")
-    tab1, tab2, tab3, tab5, tab6 = st.tabs(["Bibliography", "Scene", "Deity", "Temple area", "Bibliography of the temple"])
+    tab1, tab2, tab3, tab5 = st.tabs(["Bibliography", "Scene", "Deity", "Temple area"])
 
     with tab1:
          st.header("Bibliography")
@@ -489,38 +489,4 @@ def app():
                 label="Download table as Excel file",
                 data=buffer,
                 file_name="kalabsha_room.xlsx",
-                mime="text/Excel",)
-
-
-    with tab6:
-        st.header("Bibliography of the temple")
-        st.html("""Here you can find the bibliography of the temple of Kalabsha that
-                     I used for my MA thesis.<br>
-                     It is highly possible that it is not complete, therefore it would be great if you have
-                     any suggestion in order to enrich it.
-                     <br>This could be a good starting point, though.
-                     <br>""")
-        
-        biblio_temple = st.selectbox("Select the temple", 
-                       ["Kalabsha"])
-        st.write("You choose: ", biblio_temple)
-        st.write("")
-        st.write("BIBLIOGRAPHY OF THE TEMPLE")
-        df = load_table('v_temple_bibliography')
-        df_biblio_temple = df.loc[df['temple'] == biblio_temple]
-            #df_scene = df.drop_duplicates
-        st_df_biblio_temple = st.dataframe(df_biblio_temple.style.format(precision = 0, thousands=''), hide_index=True)
-        print(st_df_biblio_temple)
-
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine = 'xlsxwriter') as writer:
-   
-            # use to_excel function and specify the sheet_name and index 
-            # to store the dataframe in specified sheet
-          df_biblio_temple.to_excel(writer, sheet_name="Kalabsha_biblio", index=False)
-        writer.close()
-        st.download_button(
-                label="Download table as Excel file",
-                data=buffer,
-                file_name="kalabsha_biblio.xlsx",
                 mime="text/Excel",)
