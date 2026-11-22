@@ -13,8 +13,8 @@ def app():
     with col1:
         st.html("""I studied the temple of Kalabsha for my MA thesis. I created a 2D representation of the walls of the temple with Rhynoceros 3D,
     using the dimensions indicated by Henri Gauthier in his publication. 
-    <br>It was useful, for sure: I had the possibility get an idea thanks to the graphic version of the scenes described by Gauthier. 
-    Those still have a limit: it is not possible interact with them to have extra information.
+    <br>It was useful, for sure: I was able to get an idea thanks to the graphic version of the scenes described by Gauthier. 
+    Those still have a limit: it is not possible to interact with them to have extra information.
     <br>""")
     with col2:
         st.image(str(IMAGES_DIR / "diagrams" / "Cella.PNG"), caption = "The 2D version of the four walls of the Cella")

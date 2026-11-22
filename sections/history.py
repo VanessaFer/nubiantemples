@@ -39,7 +39,7 @@ def app():
 
     st.subheader("The Second Aswan Dam (1960-1970)")
     st.write("""
-    The structure of the first dam was raised three times, however it was clear that it was necessary 
+    The structure of the first dam had already been raised twice, however it was clear that it was necessary 
     to build a second, much larger one. The damage in the area of ​​ancient Nubia, already quite significant, 
     would have been devastating as _everything would have been submerged_ by the waters of the Nile, 
     which would have formed a new artificial water basin: Lake Nasser. 
@@ -51,7 +51,7 @@ def app():
     st.subheader("UNESCO's appeal (1960)")
     st.write("""
     On March 8, 1960, Vittorino Veronese, then Director General of UNESCO, made an appeal 
-    to the nations at the request of the government of the Republic of United Arabia 
+    to the nations at the request of the government of the United Arab Republic 
     and the government of the Republic of Sudan:
             
     *Nous n'avons pas le droit de laisser disparaître des temples comme ceux d'Abou Simbel 
@@ -65,7 +65,7 @@ def app():
     temples to those who would contribute to the cause. Italy was given the rock _temple 
     of Ellesyia_, now preserved in the Egyptian Museum of Turin; 
     Spain was given the _temple of Debod_, now located in the Cuartel de la Montaña park in Madrid; 
-    the United States was given the _temple of Dendur_, now preserved in the MoMA; 
+    the United States was given the _temple of Dendur_, now preserved in the Metropolitan Museum of Art in New York; 
     Germany was given the _portal of the Ptolemaic sanctuary of Kalabsha_, now located in the Ägyptisches 
     Museum in Berlin; the Netherlands was given the _temple of Tafeh North_, now preserved in 
     the Rijksmuseum van Oudheden in Leiden.

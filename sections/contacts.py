@@ -8,8 +8,8 @@ def app():
              Hi everyone! It's Vanessa here.
 
              I'd like to inform you that this project is a work in progress. 
-             If you would like to contribute with advices or additional information,
-             please feel free to send an e-mail: I'll definetely be glad to read from you!
+             If you would like to contribute with advice or additional information,
+             please feel free to send an e-mail: I'll definitely be glad to hear from you!
 """)
     
     st.write("Project's e-mail address:")

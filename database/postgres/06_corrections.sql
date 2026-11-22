@@ -16,3 +16,8 @@ WHERE oggetti_presenti ~ '\s{2,}';
 UPDATE bibliografia_tempio
 SET autore_bibliografia_tempio = regexp_replace(autore_bibliografia_tempio, ' {2,}', ' ', 'g')
 WHERE autore_bibliografia_tempio ~ ' {2,}';
+
+-- 4) stesso personaggio scritto in due modi ("Merur the young" / "Merur the Young")
+UPDATE personaggio
+SET nome_personaggio = 'Merur the Young'
+WHERE lower(nome_personaggio) = 'merur the young' AND nome_personaggio <> 'Merur the Young';

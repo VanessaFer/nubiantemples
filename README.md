@@ -12,9 +12,9 @@ based on the studies of Henri Gauthier, Aylward M. Blackman and Günther Röder.
 | Home | Project presentation | `sections/home.py` |
 | History | From the first Aswan Dam to the UNESCO campaign | `sections/history.py` |
 | Map | Interactive Folium map of the temples' original locations, filterable by period | `sections/temples_map.py` |
-| Machine Learning Project | "Predict the god": classifier on the iconography of four deities of Kalabsha | `sections/ml_project.py` |
 | Database | 139 offering scenes of the Temple of Kalabsha, with Gauthier's plates | `sections/database.py` |
-| Data Visualisation | Embedded Tableau dashboards on deities and kings | `sections/data_visualisation.py` |
+| Data Visualisation | Interactive charts (Plotly) in four tabs: by deity, room, epithet, crown | `sections/data_visualisation.py`, `sections/dataviz_charts.py` |
+| Bibliography | Bibliography of the temple of Kalabsha, with search and Excel download | `sections/bibliography.py` |
 | Contacts | Contact information | `sections/contacts.py` |
 
 ## Repository structure
@@ -30,7 +30,6 @@ nubiantemples/
 │   ├── mysql/               # MySQL dump
 │   └── postgres/            # PostgreSQL version (01_schema ... 06_corrections, views, map table)
 ├── scripts/                 # convert_mysql_dump.py, load_to_supabase.py, keep_alive.py
-├── models/                  # trained model (kalabsha_gods.pkl)
 ├── assets/
 │   ├── images/              # temples, deities, diagrams, references, branding
 │   └── plates/              # Gauthier's plates (Tav. *.jpg)
@@ -64,7 +63,7 @@ hosted on PostgreSQL (Supabase). Every table shown by the webapp is a view (`v_*
 
 ## Technologies
 
-Python · Streamlit · Folium · Pandas · Scikit-learn · MySQL · PostgreSQL (Supabase) · Tableau · Rhino 3D
+Python · Streamlit · Plotly · Folium · Pandas · MySQL · PostgreSQL (Supabase) · Rhino 3D
 
 ## Contacts
 

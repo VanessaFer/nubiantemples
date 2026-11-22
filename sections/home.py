@@ -36,15 +36,15 @@ def app():
     - Temple of Taffeh
     - Temples of Wadi es-Sebua
    
-    The aim is to **digitalize the data of the offering scenes** of the temples mentioned above.
+    The aim is to **digitise the data of the offering scenes** of the temples mentioned above.
                 
     The consultation of the data is **free and open to everyone** who wants to know more about these temples: 
              scholars, professors, curious people, etc.
 
-    :blue-background[At the moment, the data of the offering scenes of the **Temple of 
-             Kalabsha** were digitalised.]
+    :blue-background[At the moment, only the offering scenes of the **Temple of 
+             Kalabsha** have been digitised.]
                 
-    Further uptdates are in progress.
+    Further updates are in progress.
     """)
     with col2:
         st.image(str(IMAGES_DIR / "temples" / "Kalabsha.jpg"), caption = "The Temple of Kalabsha from the Nile River", width = 400)
@@ -53,19 +53,17 @@ def app():
 
     st.header("A small guide to the website")
     st.write("""
-    This website is structured as it follows:
+    This website is structured as follows:
     - **Home**: here you can find some information about the project and a small guide to the website
     - **History**: in this page there is a recap about the relocation of the Nubian temples
-    - **Map**: a digital and interactive map waits for you to explore the Nubian temples through some 
+    - **Map**: an interactive map where you can explore the Nubian temples through some 
              information
-    - **Machine Learning**: here is a simple classification model that will try to recognize
-             the deity for you
     - **Database**: this is the core of the project. In this page you can query the database in order
-             to have the data you need
-    - **Data Visualisation**: a graphic visualisation of the Database page, where you can 
-             interact with the diagrams to give an easier look to the data
+             to find the data you need
+    - **Data Visualisation**: interactive charts built on the database, to explore the data by deity, room, 
+             epithet or crown
     - **Bibliography**: the bibliography of the temple of Kalabsha, with a search by author, title or year
-    - **Contacts**: if you have some advices, please feel free to contact me!
+    - **Contacts**: if you have any advice, please feel free to contact me!
 """)
     
     st.subheader("And now... have fun exploring!")

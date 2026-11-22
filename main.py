@@ -5,7 +5,7 @@ from streamlit_option_menu import option_menu
 
 from config import IMAGES_DIR
 import style
-from sections import (contacts, ml_project, history, home, temples_map,
+from sections import (contacts, history, home, temples_map,
                       data_visualisation, database, bibliography)
 #non scrivere il .py
 
@@ -32,8 +32,8 @@ class MultiApp:
         with st.sidebar:
             app = option_menu(
                 menu_title = "Menu",
-                options = ["Home", "History", "Map", "Machine Learning Project", "Database", "Data Visualisation", "Bibliography", "Contacts"],
-                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-box", "bi-database", "bar-chart", "bi-book", "bi-envelope"],
+                options = ["Home", "History", "Map", "Database", "Data Visualisation", "Bibliography", "Contacts"],
+                icons = ["bi-house", "bi-hourglass-split", "bi-geo-alt", "bi-database", "bar-chart", "bi-book", "bi-envelope"],
                 menu_icon = "bi-list",
                 default_index = 0,
                 styles = style.MENU_STYLES
@@ -45,8 +45,6 @@ class MultiApp:
             history.app()
         if app == "Map":
             temples_map.app()
-        if app == "Machine Learning Project":
-            ml_project.app()
         if app == "Database":
             database.app()  
         if app == "Data Visualisation":

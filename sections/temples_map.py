@@ -190,7 +190,7 @@ def app():
 The map displays the **original location** of the Nubian temples that were relocated after the 
 construction of the Second Aswan Dam.
              
-See below the map for few notes.
+See below the map for a few notes.
 """)
 
     folium_static(m, width=800, height=450)
@@ -207,7 +207,7 @@ the name of the period you are interested in.
     st.write("""
 As you can see, on the map there are some green circles with a number inside of them: these are the
 clustered icons of the temples. The number of clusters will increase as you zoom in, until you
-can see the icon of the temple. The colors are not casual:
+can see the icon of the temple. The colors are not random:
 - Red = New Kingdom
 - Green = Ptolemaic Kingdom
 - Light blue = Roman Period
@@ -217,5 +217,5 @@ If you hover your mouse over the icons, a tooltip will show you the name of the 
 A pop-up appears by clicking the icon. Inside the pop-up you can find some information about the 
 temple, such as its name, the period(s) of its construction and the pharaoh(s) that worked on it.
              
-:blue-background[The pop-ups will be eriched with more contents!]
+:blue-background[The pop-ups will be enriched with more content!]
 """)

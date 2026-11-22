@@ -15,14 +15,18 @@ def app():
     st.header("A look through the data")
     st.subheader("A quick introduction to the database")
     st.html("""The database was designed with MySQL and is hosted on PostgreSQL (Supabase); the webapp queries it through Python.<br>
-    As you can see below, there are two tabs:<br>
+    As you can see below, there are four tabs:<br>
+    - Bibliography<br>
     - Scene<br>
     - Deity<br>
+    - Temple area<br>
     You can choose the one you need for your research: if you need to know some detail about the scenes,
     for example how many offering scenes are depicted inside the temple of Kalabsha; or the bibliography
-    of each scene, you should definetely choose the <i>Scene</i> tab.<br>
-    If on the contrary, you need data about the deities, the crown they wear, their posture, etc.,
+    of each scene, you should definitely choose the <i>Scene</i> tab.<br>
+    If, on the contrary, you need data about the deities, the crown they wear, their posture, etc.,
     <i>Deity</i> should be your choice. <br>
+    To find the scenes that cite a given page of a book, use the <i>Bibliography</i> tab;
+    the rooms and walls of the temple are in <i>Temple area</i>. <br>
     <br>
     Have a nice time exploring!
     """)
@@ -34,16 +38,16 @@ def app():
 
     with tab1:
          st.header("Bibliography")
-         st.html("""In this section you can make a research by selecting the book title and the page.
+         st.html("""In this section you can do some research by selecting the book title and the page.
                  The bibliography about the scenes of the temple of Kalabsha 
-                 is composed by two books, at the moment:""")
+                 is composed of two books, at the moment:""")
          
          col1, col2 = st.columns(2)
          with col1:
               st.subheader("Le temple de Kalabchah")
-              st.html("""'Le temple de Kalabchah' is a book wrote by Henri Gauthier published in 1911.
-                      <br>It is part of a larger serie named 'Les Temples immergés de la Nubie'.
-                      It is a quite complete study of the temple: the author describes the rooms and
+              st.html("""'Le temple de Kalabchah' is a book written by Henri Gauthier published in 1911.
+                      <br>It is part of a larger series named 'Les Temples immergés de la Nubie'.
+                      It is a fairly complete study of the temple: the author describes the rooms and
                       provides their measurements. He writes about the scenes, describing them with accuracy.
                       <br>He mentions the colors too, and the later inscriptions in the court.
                       <br>Here are a couple of links where you can find the PDF version of the book:
@@ -51,8 +55,8 @@ def app():
                       <br><a href = http://www.archive.org/details/letempledekalabc02gaut>Le temple de Kalabchah pt.2</a>
                       <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Plates</a>
                       <br><a href = http://www.archive.org/details/letempledekalabc03gaut>Le temple de Kalabchah - Color plates</a>
-                      <br>Unfortunately, the quality of the plates is not high, but luckily you can make
-                      a research here and have a look at the plates with a better resolution.
+                      <br>Unfortunately, the quality of the plates is not high, but luckily you can do
+                      some research here and have a look at the plates with a better resolution.
                       <br>
                       <br>
                       """)
@@ -63,8 +67,8 @@ def app():
          col3, col4 = st.columns(2)
          with col3:
               st.subheader("Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt")
-              st.html("""'Topographical Bibliography' is a serie composed by seven volumes wrote by Bertha Porter 
-                      and Rosalind Louisa Beaufort Moss published in 1975. The serie is also known by the names of its authors: Porter Moss.
+              st.html("""'Topographical Bibliography' is a series composed of seven volumes written by Bertha Porter 
+                      and Rosalind Louisa Beaufort Moss published in 1975. The series is also known by the names of its authors: Porter Moss.
                       <br>Here is the link where you can download the PDF version of the book:
                       <br><a href = http://www.griffith.ox.ac.uk/topbib/pdf/download.php?file=pm7.pdf>Topographical Bibliography of Ancient Egyptian Hieroglyphic Texts, Reliefs, and Paintings - Volume VII. Nubia, The Deserts and Outside Egypt</a>""")
          with col4:

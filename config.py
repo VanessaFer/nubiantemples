@@ -10,4 +10,3 @@ BASE_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = BASE_DIR / "assets"
 IMAGES_DIR = ASSETS_DIR / "images"
 PLATES_DIR = ASSETS_DIR / "plates"
-MODELS_DIR = BASE_DIR / "models"

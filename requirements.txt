@@ -7,8 +7,6 @@ numpy
 pillow
 openpyxl
 xlsxwriter
-joblib
-scikit-learn==1.5.2
 sqlalchemy
 psycopg2-binary
 plotly
