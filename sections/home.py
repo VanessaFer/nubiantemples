@@ -4,6 +4,11 @@ import streamlit as st
 def app():
     st.title("The submerged Temples of Nubia")
     st.subheader("*A project dedicated to the temples that were relocated*") #markdown
+    st.markdown(
+        '<div class="nt-note"><b>Phase 1:</b> the offering scenes of the temple of Kalabsha. '
+        'The other relocated temples listed below are planned and will be added over time.</div>',
+        unsafe_allow_html=True,
+    )
     st.divider()
 
     st.header("A brief introduction to the Project")

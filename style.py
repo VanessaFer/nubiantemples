@@ -32,6 +32,10 @@ hr {{ border-color: rgba(201, 155, 56, .35) !important; }}
 .nt-sub {{
     color: {SAND}; font-size: .8rem; text-align: center; opacity: .8; padding-bottom: 10px;
 }}
+.nt-note {{
+    border-left: 3px solid {GOLD}; background: rgba(201, 155, 56, .08);
+    padding: 10px 16px; border-radius: 4px; margin: 4px 0 8px 0;
+}}
 .nt-band {{ height: 10px; background: {BAND}; margin: 4px 0 14px 0; opacity: .9; }}
 </style>
 """
@@ -46,7 +50,7 @@ def sidebar_brand():
     """Titolo con fascia decorativa in cima al menù laterale."""
     st.sidebar.markdown(
         '<div class="nt-brand">☥ Nubian Temples</div>'
-        '<div class="nt-sub">The submerged temples of Nubia</div>'
+        '<div class="nt-sub">Starting with the temple of Kalabsha</div>'
         '<div class="nt-band"></div>',
         unsafe_allow_html=True,
     )
