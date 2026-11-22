@@ -1,13 +1,11 @@
 from config import IMAGES_DIR
 import streamlit as st
-import streamlit.components.v1 as components
 from sections import dataviz_charts
 
 def app():
 
     st.title("Data Visualisation")
     
-    #components.iframe("https://public.tableau.com/views/DeitiesandKingsofthetempleofKalabsha/Dashboard1?:language=it-IT&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link", height=500)
     st.header("A jump into the data of the temple of Kalabsha")
 
     st.subheader("The origins of the idea")
@@ -25,18 +23,11 @@ def app():
 
     st.subheader("The idea today")
 
-    st.html("""Thanks to versatile Data Visualisation tools such as Tableau and PowerBi, it is possible today to create interactive dashboards in order to have a clearer idea 
+    st.html("""Thanks to data visualisation tools it is possible today to create interactive charts in order to have a clearer idea 
     about the stored data.
-    <br>Below you will find some dashboards about the deities of the temple of Kalabsha, their appearance, their epithets and the gifts they both receive and give.
-    <br>By clicking on the graphs you will be able to drill down into the data.
+    <br>Below you will find some charts about the characters of the temple of Kalabsha, their appearance, their epithets and the gifts they both receive and give.
+    <br>By using the filters and hovering over the charts you will be able to explore the data.
     <br>
     """)
     
-    tab_new, tab_tableau = st.tabs(["Interactive charts (new)", "Tableau dashboard"])
-    with tab_new:
-        dataviz_charts.app()
-    with tab_tableau:
-        components.html("""
-        <div class='tableauPlaceholder' id='viz1756065371065' style='position: relative'><noscript><a href='#'><img alt='Deities in the Temple of Kalabsha ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;gr&#47;grafici_divinit&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='grafici_divinit&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;gr&#47;grafici_divinit&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='it-IT' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1756065371065');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1200px';vizElement.style.height='2527px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-        """, height = 2200)
-
+    dataviz_charts.app()

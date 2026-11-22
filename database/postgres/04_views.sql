@@ -123,19 +123,45 @@ LEFT JOIN tempio_libro tl ON tl.codice_bibliografia_tempio = b.codice_bibliograf
 LEFT JOIN tempio te ON te.codice_tempio = tl.codice_tempio
 ORDER BY b.codice_bibliografia_tempio;
 
--- Vista per la sezione Epithets dei grafici: un epiteto per riga, con divinità e ambiente del tempio.
-CREATE OR REPLACE VIEW v_epithets AS
-SELECT s.sigla_scena            AS "sceneAcronym",
-       a.tipo_ambiente          AS "room",
-       pe.nome_personaggio      AS "deityName",
-       e.epiteto_traslitterato  AS "epithet",
-       e.epiteto_tradotto       AS "translation",
-       e.epiteto_note           AS "notes"
-FROM possiede po
-JOIN personaggio pe                  ON pe.codice_personaggio = po.codice_personaggio
-JOIN epiteto e                       ON e.codice_epiteto = po.codice_epiteto
+-- Viste per la pagina Data Visualisation (schede Deity / Room / Epithet / Crown).
+-- v_characters: un personaggio per riga, con la scena, l'ambiente del tempio e il registro in cui compare.
+CREATE OR REPLACE VIEW v_characters AS
+SELECT pe.codice_personaggio,
+       pe.codice_scena,
+       s.sigla_scena                AS "sceneAcronym",
+       s.registro                   AS "register",
+       s.offerta_iconografia        AS "iconography",
+       a.tipo_ambiente              AS "room",
+       ea.orientamento_spaziale     AS "orientation",
+       ea.tipo_e_a                  AS "architecturalFeature",
+       p.tipologia_parte            AS "roomPart",
+       pe.nome_personaggio          AS "name",
+       pe.tipologia_personaggio     AS "typology",
+       pe.donatore_ricevente        AS "giverRecipient",
+       pe.caratteristiche_personaggio AS "aspect",
+       pe.seduto_stante             AS "posture",
+       c.tipologia_corona           AS "crown",
+       c.descrizione_corona         AS "crownDescription",
+       ab.nome_abito                AS "clothes",
+       d.nome_dono                  AS "gift"
+FROM personaggio pe
 LEFT JOIN scena s                    ON s.codice_scena = pe.codice_scena
 LEFT JOIN parte p                    ON p.codice_parte = s.codice_parte
 LEFT JOIN elemento_architettonico ea ON ea.codice_e_a = p.codice_e_a
 LEFT JOIN ambiente a                 ON a.codice_ambiente = ea.codice_ambiente
-ORDER BY s.codice_scena, pe.codice_personaggio, po.codice_possiede;
+LEFT JOIN corona c                   ON c.codice_corona = pe.codice_corona
+LEFT JOIN indossa i                  ON i.codice_personaggio = pe.codice_personaggio
+LEFT JOIN abito ab                   ON ab.codice_abito = i.codice_abito
+LEFT JOIN divinita_personaggio dp    ON dp.codice_personaggio_divinita = pe.codice_personaggio
+LEFT JOIN dono d                     ON d.codice_dono = dp.codice_dono_divinita
+ORDER BY pe.codice_personaggio;
+
+-- v_character_epithets: un epiteto di un personaggio per riga.
+CREATE OR REPLACE VIEW v_character_epithets AS
+SELECT po.codice_personaggio,
+       e.epiteto_traslitterato  AS "epithet",
+       e.epiteto_tradotto       AS "translation",
+       e.epiteto_note           AS "notes"
+FROM possiede po
+JOIN epiteto e ON e.codice_epiteto = po.codice_epiteto
+ORDER BY po.codice_personaggio, po.codice_possiede;
